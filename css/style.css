@@ -330,7 +330,7 @@ img.animated.pulse {
     margin-top: -85px;
     padding-top: 12rem;
     padding-bottom: 6rem;
-    background: url(../img/bg.png) center center no-repeat, var(--base-dark);
+    background: linear-gradient(rgba(26, 26, 26, 0.82), rgba(26, 26, 26, 0.92)), url(../img/bike-bg.jpg) center center no-repeat;
     background-size: cover;
     background-color: var(--base-dark) !important;
 }
@@ -443,7 +443,7 @@ hr.bg-primary {
 /*** Deal ***/
 .deal {
     position: relative;
-    background: url(../img/bg.png) center center no-repeat, var(--base-dark);
+    background: linear-gradient(rgba(26, 26, 26, 0.82), rgba(26, 26, 26, 0.92)), url(../img/bike-bg.jpg) center center no-repeat;
     background-size: cover;
     background-color: var(--base-dark) !important;
 }
@@ -510,7 +510,7 @@ hr.bg-primary {
 /*** How To Use ***/
 .how-to-use {
     position: relative;
-    background: url(../img/bg.png) center center no-repeat, var(--base-dark);
+    background: linear-gradient(rgba(26, 26, 26, 0.82), rgba(26, 26, 26, 0.92)), url(../img/bike-bg.jpg) center center no-repeat;
     background-size: cover;
     background-color: var(--base-dark) !important;
 }
@@ -605,7 +605,7 @@ hr.bg-primary {
 /*** Testimonial ***/
 .testimonial {
     position: relative;
-    background: url(../img/bg.png) center center no-repeat, var(--base-dark);
+    background: linear-gradient(rgba(26, 26, 26, 0.82), rgba(26, 26, 26, 0.92)), url(../img/bike-bg.jpg) center center no-repeat;
     background-size: cover;
     background-color: var(--base-dark) !important;
 }
@@ -759,7 +759,7 @@ hr.bg-primary {
 /*** Newsletter ***/
 .newsletter {
     position: relative;
-    background: url(../img/bg.png) center center no-repeat, var(--base-dark);
+    background: linear-gradient(rgba(26, 26, 26, 0.82), rgba(26, 26, 26, 0.92)), url(../img/bike-bg.jpg) center center no-repeat;
     background-size: cover;
     background-color: var(--base-dark) !important;
 }

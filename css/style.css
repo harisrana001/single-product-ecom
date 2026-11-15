@@ -328,8 +328,8 @@ img.animated.pulse {
 .hero-header {
     position: relative;
     margin-top: -85px;
-    padding-top: 12rem;
-    padding-bottom: 6rem;
+    padding-top: 9.5rem;
+    padding-bottom: 4.5rem;
     background: linear-gradient(rgba(26, 26, 26, 0.82), rgba(26, 26, 26, 0.92)), url(../img/bike-bg.jpg) center center no-repeat;
     background-size: cover;
     background-color: var(--base-dark) !important;
@@ -354,12 +354,17 @@ img.animated.pulse {
 .hero-header h3 {
     color: var(--accent) !important;
     font-weight: 600;
+    font-size: 1.25rem;
     text-transform: uppercase;
     letter-spacing: 2px;
+    margin-bottom: 0.75rem;
 }
 
 .hero-header h1 {
     color: var(--base-light) !important;
+    font-size: calc(1.75rem + 1.5vw);
+    line-height: 1.25;
+    margin-bottom: 1.25rem;
 }
 
 .hero-header h1 span.text-dark {
@@ -368,6 +373,23 @@ img.animated.pulse {
 
 .hero-header p {
     color: var(--text-light-muted) !important;
+    font-size: 1.05rem;
+    line-height: 1.7;
+    margin-bottom: 2rem !important;
+}
+
+.hero-header img {
+    max-height: 440px;
+    width: auto;
+    max-width: 100%;
+    display: block;
+    margin: 0 auto;
+    object-fit: contain;
+}
+
+.hero-header .btn {
+    padding: 0.7rem 2rem;
+    font-size: 1rem;
 }
 
 .hero-header .breadcrumb-item a {

@@ -56,11 +56,12 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
-                    <div class="navbar-nav ms-auto">
+                    <div class="navbar-nav ms-auto align-items-center">
                         <a href="index.html" class="nav-item nav-link active">Home</a>
                         <a href="about.html" class="nav-item nav-link">About</a>
                         <a href="product.html" class="nav-item nav-link">Products</a>
                         <a href="contact.html" class="nav-item nav-link">Contact</a>
+                        <a href="product.html" class="nav-item nav-link ms-lg-3" title="View Products & Cart"><i class="fa fa-shopping-cart fs-5 text-dark"></i></a>
                     </div>
                 </div>
             </nav>
@@ -320,23 +321,23 @@
                 </div>
                 <div class="col-md-6 col-lg-4 wow fadeIn" data-wow-delay="0.3s">
                     <h5 class="mb-4">Get In Touch</h5>
-                    <p><i class="fa fa-map-marker-alt me-3"></i>123 Street, New York, USA</p>
-                    <p><i class="fa fa-phone-alt me-3"></i>+012 345 67890</p>
-                    <p><i class="fa fa-envelope me-3"></i>info@example.com</p>
+                    <p><i class="fa fa-map-marker-alt me-3"></i>Austin, Texas, USA</p>
+                    <p><i class="fa fa-phone-alt me-3"></i>+1 (800) 555-MOTO</p>
+                    <p><i class="fa fa-envelope me-3"></i>support@motokleen.com</p>
                     <div class="d-flex pt-2">
-                        <a class="btn btn-square btn-outline-primary me-1" href=""><i class="fab fa-twitter"></i></a>
-                        <a class="btn btn-square btn-outline-primary me-1" href=""><i class="fab fa-facebook-f"></i></a>
-                        <a class="btn btn-square btn-outline-primary me-1" href=""><i class="fab fa-instagram"></i></a>
-                        <a class="btn btn-square btn-outline-primary me-1" href=""><i
-                                class="fab fa-linkedin-in"></i></a>
+                        <a class="btn btn-square btn-outline-primary me-1" href="https://twitter.com" target="_blank" rel="noopener" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a class="btn btn-square btn-outline-primary me-1" href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a class="btn btn-square btn-outline-primary me-1" href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a class="btn btn-square btn-outline-primary me-1" href="https://youtube.com" target="_blank" rel="noopener" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-4 wow fadeIn" data-wow-delay="0.5s">
-                    <h5 class="mb-4">Popular Link</h5>
-                    <a class="btn btn-link" href="">About Us</a>
-                    <a class="btn btn-link" href="">Contact Us</a>
-                    <a class="btn btn-link" href="">Privacy Policy</a>
-                    <a class="btn btn-link" href="">Terms & Condition</a>
+                    <h5 class="mb-4">Quick Links</h5>
+                    <a class="btn btn-link" href="index.html">Home</a>
+                    <a class="btn btn-link" href="product.html">Pro Detailing Kit</a>
+                    <a class="btn btn-link" href="about.html">About MotoKleen</a>
+                    <a class="btn btn-link" href="contact.html">Contact & Support</a>
+                    <a class="btn btn-link" href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#policyModal">Shipping & Guarantee</a>
                 </div>
             </div>
         </div>
@@ -344,11 +345,7 @@
             <div class="copyright">
                 <div class="row">
                     <div class="col-12 text-center mb-3 mb-md-0">
-                        &copy; <a class="border-bottom" href="#">Your Site Name</a>, All Right Reserved.
-
-                        <!--/*** The author’s attribution link must remain intact in the template. ***/-->
-                        <!--/*** If you wish to remove this credit link, please purchase the Pro Version . ***/-->
-                        Designed By <a class="border-bottom" href="https://htmlcodex.com">HTML Codex</a>
+                        &copy; <a class="border-bottom" href="index.html">MotoKleen</a>, All Rights Reserved.
                     </div>
                 </div>
             </div>
@@ -371,6 +368,30 @@
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
+    <!-- Policy Modal Start -->
+    <div class="modal fade" id="policyModal" tabindex="-1" aria-labelledby="policyModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header border-bottom">
+                    <h5 class="modal-title fw-bold" id="policyModalLabel"><i class="fa fa-shield-alt text-success me-2"></i>Shipping & Guarantee Policy</h5>
+                    <button type="button" class="btn-close shadow-none" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body py-4">
+                    <h6 class="fw-bold mb-2"><i class="fa fa-truck text-primary me-2"></i>Fast Express Shipping</h6>
+                    <p class="small text-muted mb-3">All orders are dispatched from our warehouse within 24 hours (Monday to Friday) via tracked express carrier. Orders over $35 qualify for FREE express shipping.</p>
+                    <h6 class="fw-bold mb-2"><i class="fa fa-undo text-primary me-2"></i>30-Day Money-Back Guarantee</h6>
+                    <p class="small text-muted mb-3">If our bike cleaning kit does not outperform any cleaner you have ever used on your machine, simply contact support within 30 days for a full, hassle-free refund.</p>
+                    <h6 class="fw-bold mb-2"><i class="fa fa-lock text-primary me-2"></i>100% Safe Surface Guarantee</h6>
+                    <p class="small text-muted mb-0">Our formulations are certified safe for matte paint, gloss clear coats, carbon fiber, titanium, and rubber O-ring chains when used as directed.</p>
+                </div>
+                <div class="modal-footer border-top">
+                    <button type="button" class="btn btn-dark rounded-pill px-4" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Policy Modal End -->
+
 </body>
 
 </html>

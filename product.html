@@ -214,11 +214,15 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
-                    <div class="navbar-nav ms-auto">
+                    <div class="navbar-nav ms-auto align-items-center">
                         <a href="index.html" class="nav-item nav-link">Home</a>
                         <a href="about.html" class="nav-item nav-link">About</a>
                         <a href="product.html" class="nav-item nav-link active">Products</a>
                         <a href="contact.html" class="nav-item nav-link">Contact</a>
+                        <a href="javascript:void(0)" onclick="openCartDrawer()" class="nav-item nav-link ms-lg-3 position-relative cart-nav-btn" title="View Cart">
+                            <i class="fa fa-shopping-cart fs-5 text-dark"></i>
+                            <span id="navCartBadge" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="font-size: 10px; display: none;">0</span>
+                        </a>
                     </div>
                 </div>
             </nav>
@@ -265,8 +269,8 @@
                     </div>
 
                     <div class="mb-4">
-                        <span class="h3 text-dark fw-bold">$49.99</span>
-                        <span class="pdp-old-price">$69.99</span>
+                        <span id="pdpPriceDisplay" class="h3 text-dark fw-bold">$49.99</span>
+                        <span id="pdpOldPriceDisplay" class="pdp-old-price">$69.99</span>
                     </div>
 
                     <div class="row mb-4">
@@ -288,28 +292,26 @@
                     <div class="mb-4">
                         <p class="fw-bold mb-2">Kit Size</p>
                         <div class="d-flex flex-wrap gap-2">
-                            <span class="pdp-size-btn active" onclick="pdpSize(this)">Standard (5-Piece)</span>
-                            <span class="pdp-size-btn" onclick="pdpSize(this)">Pro Kit (8-Piece)</span>
+                            <span class="pdp-size-btn" onclick="pdpSize(this)">Standard (5-Piece)</span>
+                            <span class="pdp-size-btn active" onclick="pdpSize(this)">Pro Kit (8-Piece)</span>
                             <span class="pdp-size-btn" onclick="pdpSize(this)">Ultimate Garage (12-Piece)</span>
                         </div>
                     </div>
 
                     <div class="d-flex gap-3 mb-4">
-                        <a href="#" class="btn btn-dark py-3 px-4 flex-fill rounded-pill">Buy It Now</a>
-                        <a href="#" class="btn btn-outline-dark py-3 px-4 flex-fill rounded-pill">Add To Cart</a>
+                        <button type="button" class="btn btn-primary py-3 px-4 flex-fill rounded-pill fw-bold text-white shadow-sm" onclick="pdpBuyNow()" style="background: var(--accent); border-color: var(--accent);">Buy It Now</button>
+                        <button type="button" class="btn btn-dark py-3 px-4 flex-fill rounded-pill fw-bold" onclick="pdpAddToCart()">Add To Cart</button>
                     </div>
 
                     <hr>
 
-                    <p class="mb-1 text-muted" style="font-size: 14px;">SKU: BK-CLN-PRO08</p>
+                    <p id="pdpSkuDisplay" class="mb-1 text-muted" style="font-size: 14px;">SKU: BK-CLN-PRO08</p>
                     <p class="mb-2 text-muted" style="font-size: 14px;">Tags: Bike Wash, Chain Degreaser, Ceramic Protect, Motorcycle Care</p>
                     <div class="d-flex align-items-center gap-2">
                         <span class="text-muted" style="font-size: 14px;">Share:</span>
-                        <a class="btn btn-square btn-sm btn-outline-primary" href=""><i
-                                class="fab fa-facebook-f"></i></a>
-                        <a class="btn btn-square btn-sm btn-outline-primary" href=""><i class="fab fa-twitter"></i></a>
-                        <a class="btn btn-square btn-sm btn-outline-primary" href=""><i
-                                class="fab fa-instagram"></i></a>
+                        <a class="btn btn-square btn-sm btn-outline-primary" href="https://facebook.com" target="_blank" rel="noopener" aria-label="Share on Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a class="btn btn-square btn-sm btn-outline-primary" href="https://twitter.com" target="_blank" rel="noopener" aria-label="Share on Twitter"><i class="fab fa-twitter"></i></a>
+                        <a class="btn btn-square btn-sm btn-outline-primary" href="https://instagram.com" target="_blank" rel="noopener" aria-label="Share on Instagram"><i class="fab fa-instagram"></i></a>
                     </div>
                 </div>
             </div>
@@ -461,23 +463,23 @@
                 </div>
                 <div class="col-md-6 col-lg-4 wow fadeIn" data-wow-delay="0.3s">
                     <h5 class="mb-4">Get In Touch</h5>
-                    <p><i class="fa fa-map-marker-alt me-3"></i>123 Street, New York, USA</p>
-                    <p><i class="fa fa-phone-alt me-3"></i>+012 345 67890</p>
-                    <p><i class="fa fa-envelope me-3"></i>info@example.com</p>
+                    <p><i class="fa fa-map-marker-alt me-3"></i>Austin, Texas, USA</p>
+                    <p><i class="fa fa-phone-alt me-3"></i>+1 (800) 555-MOTO</p>
+                    <p><i class="fa fa-envelope me-3"></i>support@motokleen.com</p>
                     <div class="d-flex pt-2">
-                        <a class="btn btn-square btn-outline-primary me-1" href=""><i class="fab fa-twitter"></i></a>
-                        <a class="btn btn-square btn-outline-primary me-1" href=""><i class="fab fa-facebook-f"></i></a>
-                        <a class="btn btn-square btn-outline-primary me-1" href=""><i class="fab fa-instagram"></i></a>
-                        <a class="btn btn-square btn-outline-primary me-1" href=""><i
-                                class="fab fa-linkedin-in"></i></a>
+                        <a class="btn btn-square btn-outline-primary me-1" href="https://twitter.com" target="_blank" rel="noopener" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a class="btn btn-square btn-outline-primary me-1" href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a class="btn btn-square btn-outline-primary me-1" href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a class="btn btn-square btn-outline-primary me-1" href="https://youtube.com" target="_blank" rel="noopener" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-4 wow fadeIn" data-wow-delay="0.5s">
-                    <h5 class="mb-4">Popular Link</h5>
-                    <a class="btn btn-link" href="">About Us</a>
-                    <a class="btn btn-link" href="">Contact Us</a>
-                    <a class="btn btn-link" href="">Privacy Policy</a>
-                    <a class="btn btn-link" href="">Terms & Condition</a>
+                    <h5 class="mb-4">Quick Links</h5>
+                    <a class="btn btn-link" href="index.html">Home</a>
+                    <a class="btn btn-link" href="product.html">Pro Detailing Kit</a>
+                    <a class="btn btn-link" href="about.html">About MotoKleen</a>
+                    <a class="btn btn-link" href="contact.html">Contact & Support</a>
+                    <a class="btn btn-link" href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#policyModal">Shipping & Guarantee</a>
                 </div>
             </div>
         </div>
@@ -485,11 +487,7 @@
             <div class="copyright">
                 <div class="row">
                     <div class="col-12 text-center mb-3 mb-md-0">
-                        &copy; <a class="border-bottom" href="#">Your Site Name</a>, All Right Reserved.
-
-                        <!--/*** The author’s attribution link must remain intact in the template. ***/-->
-                        <!--/*** If you wish to remove this credit link, please purchase the Pro Version . ***/-->
-                        Designed By <a class="border-bottom" href="https://htmlcodex.com">HTML Codex</a>
+                        &copy; <a class="border-bottom" href="index.html">MotoKleen</a>, All Rights Reserved.
                     </div>
                 </div>
             </div>
@@ -513,15 +511,78 @@
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
 
+    <!-- Cart Drawer Offcanvas Start -->
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="cartDrawer" aria-labelledby="cartDrawerLabel" style="width: 420px; max-width: 90vw;">
+        <div class="offcanvas-header border-bottom">
+            <h5 class="offcanvas-title fw-bold text-dark" id="cartDrawerLabel"><i class="fa fa-shopping-bag me-2" style="color: var(--accent);"></i>Your Cart (<span id="cartDrawerCount">0</span>)</h5>
+            <button type="button" class="btn-close text-reset shadow-none" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body d-flex flex-column">
+            <!-- Free Shipping Bar -->
+            <div class="bg-light p-3 rounded mb-3">
+                <div class="d-flex justify-content-between align-items-center mb-1" style="font-size: 13px;">
+                    <span class="fw-bold text-dark"><i class="fa fa-truck text-dark me-1"></i> Free Express Shipping</span>
+                    <span class="text-success fw-bold">Unlocked!</span>
+                </div>
+                <div class="progress" style="height: 6px;">
+                    <div class="progress-bar" role="progressbar" style="width: 100%; background: var(--accent);" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+            </div>
+
+            <!-- Cart Items Container -->
+            <div id="cartItemsList" class="flex-grow-1 overflow-auto pe-1">
+                <!-- Populated dynamically via JS -->
+            </div>
+
+            <!-- Empty Cart State -->
+            <div id="emptyCartState" class="text-center py-5 d-none">
+                <i class="fa fa-shopping-cart fa-3x text-muted mb-3"></i>
+                <h6 class="text-dark fw-bold">Your cart is empty</h6>
+                <p class="small text-muted mb-4">Add the Pro Bike Cleaning Kit to start detailing your machine!</p>
+                <button type="button" class="btn btn-dark btn-sm rounded-pill px-4" data-bs-dismiss="offcanvas">Start Shopping</button>
+            </div>
+
+            <!-- Cart Summary & Checkout -->
+            <div id="cartFooterArea" class="border-top pt-3 mt-auto">
+                <div class="d-flex justify-content-between mb-2">
+                    <span class="text-muted">Subtotal</span>
+                    <span id="cartDrawerSubtotal" class="fw-bold fs-5 text-dark">$0.00</span>
+                </div>
+                <div class="d-flex justify-content-between mb-3 text-muted small">
+                    <span>Shipping</span>
+                    <span class="text-success fw-bold">FREE</span>
+                </div>
+                <button type="button" class="btn btn-primary w-100 py-3 rounded-pill fw-bold text-white mb-2 shadow-sm" onclick="pdpCheckout()" style="background: var(--accent); border-color: var(--accent);">
+                    Proceed To Checkout &rarr;
+                </button>
+                <div class="text-center small text-muted mt-2">
+                    <i class="fa fa-shield-alt text-success me-1"></i> 30-Day Money-Back Guarantee • Secure Checkout
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Cart Drawer Offcanvas End -->
+
+
     <!-- Product Detail Page Javascript -->
     <script>
+        const pricing = {
+            "Standard (5-Piece)": { price: 34.99, old: 49.99, sku: "BK-CLN-STD05" },
+            "Pro Kit (8-Piece)": { price: 49.99, old: 69.99, sku: "BK-CLN-PRO08" },
+            "Ultimate Garage (12-Piece)": { price: 79.99, old: 109.99, sku: "BK-CLN-ULT12" }
+        };
+
+        let currentKitSize = "Pro Kit (8-Piece)";
+        let currentFormula = "Matte Safe";
+        let pdpQtyCount = 1;
+        let cart = [];
+
         function pdpSwapImg(el) {
             document.getElementById('pdpMainImg').src = el.src;
             document.querySelectorAll('.pdp-thumb').forEach(t => t.classList.remove('active'));
             el.classList.add('active');
         }
 
-        let pdpQtyCount = 1;
         function pdpQty(delta) {
             pdpQtyCount = Math.max(1, pdpQtyCount + delta);
             document.getElementById('pdpQtyVal').innerText = pdpQtyCount;
@@ -530,15 +591,145 @@
         function pdpSize(el) {
             document.querySelectorAll('.pdp-size-btn').forEach(s => s.classList.remove('active'));
             el.classList.add('active');
+            currentKitSize = el.innerText.trim();
+            const p = pricing[currentKitSize] || pricing["Pro Kit (8-Piece)"];
+            document.getElementById('pdpPriceDisplay').innerText = "$" + p.price.toFixed(2);
+            document.getElementById('pdpOldPriceDisplay').innerText = "$" + p.old.toFixed(2);
+            document.getElementById('pdpSkuDisplay').innerText = "SKU: " + p.sku;
         }
 
         document.querySelectorAll('.pdp-swatch').forEach(sw => {
             sw.addEventListener('click', () => {
                 document.querySelectorAll('.pdp-swatch').forEach(s => s.classList.remove('active'));
                 sw.classList.add('active');
+                currentFormula = sw.getAttribute('title') || "Matte Safe";
             });
         });
+
+        function updateCartUI() {
+            const list = document.getElementById('cartItemsList');
+            const empty = document.getElementById('emptyCartState');
+            const footer = document.getElementById('cartFooterArea');
+            const totalCount = cart.reduce((sum, item) => sum + item.qty, 0);
+            const subtotal = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+
+            document.getElementById('cartDrawerCount').innerText = totalCount;
+            const badge = document.getElementById('navCartBadge');
+            if (totalCount > 0) {
+                badge.innerText = totalCount;
+                badge.style.display = 'inline-block';
+            } else {
+                badge.style.display = 'none';
+            }
+
+            if (cart.length === 0) {
+                list.innerHTML = '';
+                empty.classList.remove('d-none');
+                footer.classList.add('d-none');
+            } else {
+                empty.classList.add('d-none');
+                footer.classList.remove('d-none');
+                document.getElementById('cartDrawerSubtotal').innerText = "$" + subtotal.toFixed(2);
+                list.innerHTML = cart.map((item, idx) => `
+                    <div class="card mb-3 border-0 bg-light p-2 rounded">
+                        <div class="row g-2 align-items-center">
+                            <div class="col-3">
+                                <img src="img/bike-cleaning-kit.jpg" class="img-fluid rounded" alt="Kit">
+                            </div>
+                            <div class="col-9">
+                                <div class="d-flex justify-content-between align-items-start">
+                                    <h6 class="mb-1 text-dark fw-bold" style="font-size: 14px;">${item.name}</h6>
+                                    <button type="button" class="btn btn-sm text-danger p-0" onclick="removeCartItem(${idx})"><i class="fa fa-trash-alt"></i></button>
+                                </div>
+                                <div class="text-muted small mb-2">${item.size} • ${item.formula}</div>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span class="fw-bold text-dark">$${(item.price * item.qty).toFixed(2)}</span>
+                                    <div class="d-flex align-items-center gap-2">
+                                        <button type="button" class="btn btn-sm btn-white border px-2 py-0" onclick="changeCartQty(${idx}, -1)">-</button>
+                                        <span class="small fw-bold px-1">${item.qty}</span>
+                                        <button type="button" class="btn btn-sm btn-white border px-2 py-0" onclick="changeCartQty(${idx}, 1)">+</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `).join('');
+            }
+        }
+
+        function pdpAddToCart() {
+            const p = pricing[currentKitSize] || pricing["Pro Kit (8-Piece)"];
+            const existingIdx = cart.findIndex(i => i.size === currentKitSize && i.formula === currentFormula);
+            if (existingIdx > -1) {
+                cart[existingIdx].qty += pdpQtyCount;
+            } else {
+                cart.push({
+                    name: "Pro Bike Cleaning Kit",
+                    size: currentKitSize,
+                    formula: currentFormula,
+                    price: p.price,
+                    qty: pdpQtyCount
+                });
+            }
+            updateCartUI();
+            openCartDrawer();
+        }
+
+        function pdpBuyNow() {
+            pdpAddToCart();
+            pdpCheckout();
+        }
+
+        function openCartDrawer() {
+            const drawerEl = document.getElementById('cartDrawer');
+            const bsOffcanvas = bootstrap.Offcanvas.getOrCreateInstance(drawerEl);
+            bsOffcanvas.show();
+        }
+
+        function removeCartItem(idx) {
+            cart.splice(idx, 1);
+            updateCartUI();
+        }
+
+        function changeCartQty(idx, delta) {
+            cart[idx].qty += delta;
+            if (cart[idx].qty <= 0) {
+                cart.splice(idx, 1);
+            }
+            updateCartUI();
+        }
+
+        function pdpCheckout() {
+            if (cart.length === 0) return;
+            const subtotal = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+            const totalItems = cart.reduce((sum, i) => sum + i.qty, 0);
+            alert("Order Summary:\nTotal Items: " + totalItems + "\nTotal Amount: $" + subtotal.toFixed(2) + " (FREE Express Shipping)\n\nIn a production environment, this will redirect to your Stripe / Shopify / PayPal checkout!");
+        }
     </script>
+    <!-- Policy Modal Start -->
+    <div class="modal fade" id="policyModal" tabindex="-1" aria-labelledby="policyModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header border-bottom">
+                    <h5 class="modal-title fw-bold" id="policyModalLabel"><i class="fa fa-shield-alt text-success me-2"></i>Shipping & Guarantee Policy</h5>
+                    <button type="button" class="btn-close shadow-none" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body py-4">
+                    <h6 class="fw-bold mb-2"><i class="fa fa-truck text-primary me-2"></i>Fast Express Shipping</h6>
+                    <p class="small text-muted mb-3">All orders are dispatched from our warehouse within 24 hours (Monday to Friday) via tracked express carrier. Orders over $35 qualify for FREE express shipping.</p>
+                    <h6 class="fw-bold mb-2"><i class="fa fa-undo text-primary me-2"></i>30-Day Money-Back Guarantee</h6>
+                    <p class="small text-muted mb-3">If our bike cleaning kit does not outperform any cleaner you have ever used on your machine, simply contact support within 30 days for a full, hassle-free refund.</p>
+                    <h6 class="fw-bold mb-2"><i class="fa fa-lock text-primary me-2"></i>100% Safe Surface Guarantee</h6>
+                    <p class="small text-muted mb-0">Our formulations are certified safe for matte paint, gloss clear coats, carbon fiber, titanium, and rubber O-ring chains when used as directed.</p>
+                </div>
+                <div class="modal-footer border-top">
+                    <button type="button" class="btn btn-dark rounded-pill px-4" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Policy Modal End -->
+
 </body>
 
 </html>

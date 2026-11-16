@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Hairnic - Single Product Website Template</title>
+    <title>MotoKleen - Pro Bike Cleaning Kit</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -31,6 +31,164 @@
 
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
+
+    <!-- Product Detail Page Stylesheet -->
+    <style>
+        .pdp-breadcrumb a {
+            color: #6c757d;
+            text-decoration: none;
+        }
+
+        .pdp-breadcrumb a:hover {
+            color: var(--bs-primary, #28a745);
+        }
+
+        .pdp-breadcrumb .active {
+            color: #212529;
+            font-weight: 500;
+        }
+
+        .pdp-thumb {
+            width: 100%;
+            height: 100px;
+            object-fit: cover;
+            border: 2px solid transparent;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .pdp-thumb.active,
+        .pdp-thumb:hover {
+            border-color: var(--bs-primary, #28a745);
+        }
+
+        .pdp-main-img {
+            width: 100%;
+            height: 480px;
+            object-fit: cover;
+            border-radius: 6px;
+        }
+
+        .pdp-badge {
+            background: #f1f1f1;
+            color: #495057;
+            font-size: 12px;
+            padding: 5px 12px;
+            border-radius: 4px;
+            display: inline-block;
+        }
+
+        .pdp-stars i {
+            color: #ffb800;
+            font-size: 14px;
+        }
+
+        .pdp-old-price {
+            text-decoration: line-through;
+            color: #adb5bd;
+            font-size: 18px;
+            margin-left: 10px;
+        }
+
+        .pdp-swatch {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: inline-block;
+            cursor: pointer;
+            border: 2px solid transparent;
+        }
+
+        .pdp-swatch.active {
+            border-color: #212529;
+            box-shadow: 0 0 0 2px #fff inset;
+        }
+
+        .pdp-qty-btn {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: #212529;
+            color: #fff;
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .pdp-size-btn {
+            min-width: 44px;
+            height: 40px;
+            border-radius: 50%;
+            border: 1px solid #ced4da;
+            background: #fff;
+            color: #212529;
+            font-size: 13px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 10px;
+            cursor: pointer;
+        }
+
+        .pdp-size-btn.active {
+            background: #212529;
+            color: #fff;
+            border-color: #212529;
+        }
+
+        .pdp-tabs .nav-link {
+            color: #6c757d;
+            font-weight: 600;
+            border: none;
+            padding: 0 0 10px 0;
+            margin-right: 30px;
+        }
+
+        .pdp-tabs .nav-link.active {
+            color: #212529;
+            border-bottom: 2px solid #212529;
+            background: none;
+        }
+
+        .pdp-review-item {
+            border-bottom: 1px solid #f1f1f1;
+            padding: 20px 0;
+        }
+
+        .pdp-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .pdp-rating-box {
+            background: #fff;
+            border: 1px solid #f1f1f1;
+            border-radius: 8px;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .pdp-brand-box {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 25px;
+        }
+
+        .pdp-brand-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+        }
+    </style>
 </head>
 
 <body>
@@ -49,7 +207,7 @@
         <div class="container">
             <nav class="navbar navbar-expand-lg navbar-light p-0">
                 <a href="index.html" class="navbar-brand">
-                    <h2 class="text-white">Hairnic</h2>
+                    <h2 class="text-dark mb-0">Moto<span style="color: var(--accent);">Kleen</span></h2>
                 </a>
                 <button type="button" class="navbar-toggler ms-auto me-0" data-bs-toggle="collapse"
                     data-bs-target="#navbarCollapse">
@@ -60,19 +218,8 @@
                         <a href="index.html" class="nav-item nav-link">Home</a>
                         <a href="about.html" class="nav-item nav-link">About</a>
                         <a href="product.html" class="nav-item nav-link active">Products</a>
-                        <div class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
-                            <div class="dropdown-menu bg-light mt-2">
-                                <a href="feature.html" class="dropdown-item">Features</a>
-                                <a href="how-to-use.html" class="dropdown-item">How To Use</a>
-                                <a href="testimonial.html" class="dropdown-item">Testimonial</a>
-                                <a href="blog.html" class="dropdown-item">Blog Articles</a>
-                                <a href="404.html" class="dropdown-item">404 Page</a>
-                            </div>
-                        </div>
                         <a href="contact.html" class="nav-item nav-link">Contact</a>
                     </div>
-                    <a href="https://htmlcodex.com/downloading/?item=2727" class="btn btn-dark py-2 px-4 d-none d-lg-inline-block">Buy Pro Version</a>
                 </div>
             </nav>
         </div>
@@ -80,201 +227,239 @@
     <!-- Navbar End -->
 
 
-    <!-- Hero Start -->
-    <div class="container-fluid bg-primary hero-header mb-5">
-        <div class="container text-center">
-            <h1 class="display-4 text-white mb-3 animated slideInDown">Products</h1>
-            <nav aria-label="breadcrumb">
-                <ol class="breadcrumb justify-content-center mb-0 animated slideInDown">
-                    <li class="breadcrumb-item"><a class="text-white" href="#">Home</a></li>
-                    <li class="breadcrumb-item"><a class="text-white" href="#">Pages</a></li>
-                    <li class="breadcrumb-item text-white active" aria-current="page">Products</li>
-                </ol>
-            </nav>
-        </div>
-    </div>
-    <!-- Hero End -->
 
 
-    <!-- Product Start -->
-    <div class="container-fluid py-5">
+
+    <!-- Product Detail Start -->
+    <div class="container-fluid pb-5">
         <div class="container">
-            <div class="mx-auto text-center wow fadeIn" data-wow-delay="0.1s" style="max-width: 600px;">
-                <h1 class="text-primary mb-3"><span class="fw-light text-dark">Our Natural</span> Hair Products</h1>
-                <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis aliquet, erat non malesuada consequat, nibh erat tempus risus.</p>
+            <div class="row g-5">
+
+                <!-- Gallery -->
+                <div class="col-lg-6">
+                    <div class="row g-3">
+                        <div class="col-10">
+                            <img id="pdpMainImg" class="pdp-main-img" src="img/bike-cleaning-kit.jpg" onerror="this.src='img/bike-gallery-1.jpg'" alt="Bike Cleaning Kit">
+                        </div>
+                        <div class="col-2">
+                            <div class="d-flex flex-column gap-3">
+                                <img class="pdp-thumb active" src="img/bike-cleaning-kit.jpg" onerror="this.src='img/bike-gallery-1.jpg'" onclick="pdpSwapImg(this)">
+                                <img class="pdp-thumb" src="img/bike-gallery-1.jpg" onclick="pdpSwapImg(this)">
+                                <img class="pdp-thumb" src="img/bike-gallery-2.jpg" onclick="pdpSwapImg(this)">
+                                <img class="pdp-thumb" src="img/erasebg-transformed.webp" onclick="pdpSwapImg(this)">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Buy Box -->
+                <div class="col-lg-6">
+                    <span class="pdp-badge mb-3">Bike Care Kit</span>
+                    <h2 class="mb-2">Pro Ceramic Bike Wash & Chain Detailing Kit</h2>
+                    <div class="d-flex align-items-center mb-3">
+                        <span class="pdp-stars me-2">
+                            <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i
+                                class="fa fa-star"></i><i class="fa fa-star-half-alt"></i>
+                        </span>
+                        <span class="text-muted" style="font-size: 14px;">(4.9 from 480 Reviews)</span>
+                    </div>
+
+                    <div class="mb-4">
+                        <span class="h3 text-dark fw-bold">$49.99</span>
+                        <span class="pdp-old-price">$69.99</span>
+                    </div>
+
+                    <div class="row mb-4">
+                        <div class="col-6">
+                            <p class="fw-bold mb-2">Finish Formula</p>
+                            <span class="pdp-swatch active" title="Matte Safe" style="background:#2c2c2c;"></span>
+                            <span class="pdp-swatch" title="High Gloss Ceramic" style="background:#ff5a00;"></span>
+                        </div>
+                        <div class="col-6">
+                            <p class="fw-bold mb-2">Quantity</p>
+                            <div class="d-flex align-items-center gap-3">
+                                <button class="pdp-qty-btn" onclick="pdpQty(-1)"><i class="fa fa-minus"></i></button>
+                                <span id="pdpQtyVal" class="fw-bold">1</span>
+                                <button class="pdp-qty-btn" onclick="pdpQty(1)"><i class="fa fa-plus"></i></button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mb-4">
+                        <p class="fw-bold mb-2">Kit Size</p>
+                        <div class="d-flex flex-wrap gap-2">
+                            <span class="pdp-size-btn active" onclick="pdpSize(this)">Standard (5-Piece)</span>
+                            <span class="pdp-size-btn" onclick="pdpSize(this)">Pro Kit (8-Piece)</span>
+                            <span class="pdp-size-btn" onclick="pdpSize(this)">Ultimate Garage (12-Piece)</span>
+                        </div>
+                    </div>
+
+                    <div class="d-flex gap-3 mb-4">
+                        <a href="#" class="btn btn-dark py-3 px-4 flex-fill rounded-pill">Buy It Now</a>
+                        <a href="#" class="btn btn-outline-dark py-3 px-4 flex-fill rounded-pill">Add To Cart</a>
+                    </div>
+
+                    <hr>
+
+                    <p class="mb-1 text-muted" style="font-size: 14px;">SKU: BK-CLN-PRO08</p>
+                    <p class="mb-2 text-muted" style="font-size: 14px;">Tags: Bike Wash, Chain Degreaser, Ceramic Protect, Motorcycle Care</p>
+                    <div class="d-flex align-items-center gap-2">
+                        <span class="text-muted" style="font-size: 14px;">Share:</span>
+                        <a class="btn btn-square btn-sm btn-outline-primary" href=""><i
+                                class="fab fa-facebook-f"></i></a>
+                        <a class="btn btn-square btn-sm btn-outline-primary" href=""><i class="fab fa-twitter"></i></a>
+                        <a class="btn btn-square btn-sm btn-outline-primary" href=""><i
+                                class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
             </div>
-            <div class="row g-4">
-                <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.1s">
-                    <div class="product-item text-center border h-100 p-4">
-                        <img class="img-fluid mb-4" src="img/product-1.png" alt="">
-                        <div class="mb-2">
-                            <small class="fa fa-star text-primary"></small>
-                            <small class="fa fa-star text-primary"></small>
-                            <small class="fa fa-star text-primary"></small>
-                            <small class="fa fa-star text-primary"></small>
-                            <small class="fa fa-star text-primary"></small>
-                            <small>(99)</small>
+
+            <!-- Tabs + Reviews + Sidebar -->
+            <div class="row g-5 mt-4">
+                <div class="col-lg-8">
+                    <ul class="nav pdp-tabs mb-4" id="pdpTab">
+                        <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#pdpDetails">Details</a>
+                        </li>
+                        <li class="nav-item"><a class="nav-link active" data-bs-toggle="tab"
+                                href="#pdpReviews">Reviews</a></li>
+                        <li class="nav-item"><a class="nav-link" data-bs-toggle="tab"
+                                href="#pdpDiscussion">Discussion</a></li>
+                    </ul>
+
+                    <div class="tab-content">
+                        <div class="tab-pane fade" id="pdpDetails">
+                            <h5 class="mb-3">All-In-One Motorcycle & Bike Detailing System</h5>
+                            <p class="mb-3">Engineered specifically for motorcycles, dirt bikes, and sports bikes. Our pro-grade cleaning kit penetrates stubborn road grime, bugs, brake dust, and chain muck without stripping protective coatings or scratching premium paint.</p>
+                            <h6 class="mb-2">What's Inside The Kit:</h6>
+                            <ul class="list-unstyled mb-3">
+                                <li class="mb-1"><i class="fa fa-check text-success me-2"></i><strong>1L Nano-Tech Bike Cleaner</strong> - Fast, biodegradable formula safe on all surfaces.</li>
+                                <li class="mb-1"><i class="fa fa-check text-success me-2"></i><strong>500ml Bio Chain Degreaser</strong> - Dissolves built-up chain wax and oil in seconds.</li>
+                                <li class="mb-1"><i class="fa fa-check text-success me-2"></i><strong>400ml All-Weather Chain Lube</strong> - Long-lasting ceramic friction reduction.</li>
+                                <li class="mb-1"><i class="fa fa-check text-success me-2"></i><strong>Ceramic Protect Spray</strong> - Hydrophobic shield for gloss and matte finishes.</li>
+                                <li class="mb-1"><i class="fa fa-check text-success me-2"></i><strong>Claw Cleaning Brush & Microfiber Towel</strong> - Scratch-free agitation and buffing.</li>
+                            </ul>
                         </div>
-                        <a href="" class="h6 d-inline-block mb-2">Hair Shining Shampoo</a>
-                        <h5 class="text-primary mb-3">$99.99</h5>
-                        <a href="" class="btn btn-outline-primary px-3">Add To Cart</a>
+
+                        <div class="tab-pane fade show active" id="pdpReviews">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <div>
+                                    <h5 class="mb-0">Rider Reviews</h5>
+                                    <span class="text-muted" style="font-size: 13px;">Showing 1-3 of 48 results</span>
+                                </div>
+                                <div class="d-flex align-items-center gap-2">
+                                    <span class="text-muted" style="font-size: 13px;">Sort by:</span>
+                                    <select class="form-select form-select-sm" style="width: auto;">
+                                        <option>Newest</option>
+                                        <option>Oldest</option>
+                                        <option>Highest Rated</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="pdp-review-item d-flex">
+                                <img class="pdp-avatar me-3" src="img/testimonial-1.jpg" alt="">
+                                <div>
+                                    <div class="d-flex align-items-center gap-2 mb-1">
+                                        <span class="fw-bold">Alex R. (Track Rider)</span>
+                                        <span class="text-muted" style="font-size: 12px;">Yesterday</span>
+                                    </div>
+                                    <span class="pdp-stars d-block mb-2"><i class="fa fa-star"></i><i
+                                            class="fa fa-star"></i><i class="fa fa-star"></i><i
+                                            class="fa fa-star"></i><i class="fa fa-star"></i></span>
+                                    <p class="mb-2">Cleaned my sportbike in under 15 minutes. The degreaser cuts through baked-on chain fling like butter without harming the anodized swingarm.
+                                    </p>
+                                    <div class="d-flex gap-3 text-muted" style="font-size: 12px;">
+                                        <span>Reply</span>
+                                        <span><i class="fa fa-thumbs-up"></i> 58</span>
+                                        <span><i class="fa fa-thumbs-down"></i> 0</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="pdp-review-item d-flex">
+                                <img class="pdp-avatar me-3" src="img/testimonial-2.jpg" alt="">
+                                <div>
+                                    <div class="d-flex align-items-center gap-2 mb-1">
+                                        <span class="fw-bold">Dave M. (Adventure Tourer)</span>
+                                        <span class="text-muted" style="font-size: 12px;">2 days ago</span>
+                                    </div>
+                                    <span class="pdp-stars d-block mb-2"><i class="fa fa-star"></i><i
+                                            class="fa fa-star"></i><i class="fa fa-star"></i><i
+                                            class="fa fa-star"></i><i class="fa fa-star"></i></span>
+                                    <p class="mb-2">Best bike wash kit on the market. The detailing brush and microfiber towels didn't leave a single swirl mark on my fairings.</p>
+                                    <div class="d-flex gap-3 text-muted" style="font-size: 12px;">
+                                        <span>Reply</span>
+                                        <span><i class="fa fa-thumbs-up"></i> 42</span>
+                                        <span><i class="fa fa-thumbs-down"></i> 1</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="pdp-review-item d-flex">
+                                <img class="pdp-avatar me-3" src="img/testimonial-3.jpg" alt="">
+                                <div>
+                                    <div class="d-flex align-items-center gap-2 mb-1">
+                                        <span class="fw-bold">Marcus V.</span>
+                                        <span class="text-muted" style="font-size: 12px;">5 days ago</span>
+                                    </div>
+                                    <span class="pdp-stars d-block mb-2"><i class="fa fa-star"></i><i
+                                            class="fa fa-star"></i><i class="fa fa-star"></i><i
+                                            class="fa fa-star"></i><i class="fa fa-star"></i></span>
+                                    <p class="mb-2">The ceramic protection spray makes subsequent washes so easy. Water and road dust simply bead off.</p>
+                                    <div class="d-flex gap-3 text-muted" style="font-size: 12px;">
+                                        <span>Reply</span>
+                                        <span><i class="fa fa-thumbs-up"></i> 31</span>
+                                        <span><i class="fa fa-thumbs-down"></i> 0</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tab-pane fade" id="pdpDiscussion">
+                            <p class="text-muted">No discussion threads yet. Be the first to ask a question about bike compatibility.</p>
+                        </div>
                     </div>
                 </div>
-                <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.3s">
-                    <div class="product-item text-center border h-100 p-4">
-                        <img class="img-fluid mb-4" src="img/product-2.png" alt="">
-                        <div class="mb-2">
-                            <small class="fa fa-star text-primary"></small>
-                            <small class="fa fa-star text-primary"></small>
-                            <small class="fa fa-star text-primary"></small>
-                            <small class="fa fa-star text-primary"></small>
-                            <small class="fa fa-star text-primary"></small>
-                            <small>(99)</small>
+
+                <!-- Sidebar -->
+                <div class="col-lg-4">
+                    <div class="pdp-rating-box mb-4">
+                        <h2 class="mb-1">4.9 <span class="fs-6 text-muted fw-normal">out of 5</span></h2>
+                        <div class="pdp-stars mb-2" style="font-size: 18px;">
+                            <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i
+                                class="fa fa-star"></i><i class="fa fa-star"></i>
                         </div>
-                        <a href="" class="h6 d-inline-block mb-2">Anti-dandruff Shampoo</a>
-                        <h5 class="text-primary mb-3">$99.99</h5>
-                        <a href="" class="btn btn-outline-primary px-3">Add To Cart</a>
+                        <span class="text-muted">(480 Reviews)</span>
                     </div>
-                </div>
-                <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.5s">
-                    <div class="product-item text-center border h-100 p-4">
-                        <img class="img-fluid mb-4" src="img/product-1.png" alt="">
-                        <div class="mb-2">
-                            <small class="fa fa-star text-primary"></small>
-                            <small class="fa fa-star text-primary"></small>
-                            <small class="fa fa-star text-primary"></small>
-                            <small class="fa fa-star text-primary"></small>
-                            <small class="fa fa-star text-primary"></small>
-                            <small>(99)</small>
+
+                    <div class="pdp-brand-box">
+                        <h5 class="mb-3">Bike Care Essentials<br>20% Off</h5>
+                        <div class="d-flex gap-2 mb-3">
+                            <span class="pdp-brand-icon"><i class="fa fa-motorcycle"></i></span>
+                            <span class="pdp-brand-icon"><i class="fa fa-spray-can"></i></span>
+                            <span class="pdp-brand-icon"><i class="fa fa-shield-alt"></i></span>
+                            <span class="pdp-brand-icon"><i class="fa fa-tools"></i></span>
                         </div>
-                        <a href="" class="h6 d-inline-block mb-2">Anti Hair Fall Shampoo</a>
-                        <h5 class="text-primary mb-3">$99.99</h5>
-                        <a href="" class="btn btn-outline-primary px-3">Add To Cart</a>
+                        <a href="product.html" class="btn btn-dark btn-sm rounded-pill px-3">View Details &rarr;</a>
                     </div>
-                </div>
-                <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.7s">
-                    <div class="product-item text-center border h-100 p-4">
-                        <img class="img-fluid mb-4" src="img/product-2.png" alt="">
-                        <div class="mb-2">
-                            <small class="fa fa-star text-primary"></small>
-                            <small class="fa fa-star text-primary"></small>
-                            <small class="fa fa-star text-primary"></small>
-                            <small class="fa fa-star text-primary"></small>
-                            <small class="fa fa-star text-primary"></small>
-                            <small>(99)</small>
-                        </div>
-                        <a href="" class="h6 d-inline-block mb-2">Hair Growing Shampoo</a>
-                        <h5 class="text-primary mb-3">$99.99</h5>
-                        <a href="" class="btn btn-outline-primary px-3">Add To Cart</a>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.1s">
-                    <div class="product-item text-center border h-100 p-4">
-                        <img class="img-fluid mb-4" src="img/product-1.png" alt="">
-                        <div class="mb-2">
-                            <small class="fa fa-star text-primary"></small>
-                            <small class="fa fa-star text-primary"></small>
-                            <small class="fa fa-star text-primary"></small>
-                            <small class="fa fa-star text-primary"></small>
-                            <small class="fa fa-star text-primary"></small>
-                            <small>(99)</small>
-                        </div>
-                        <a href="" class="h6 d-inline-block mb-2">Hair Shining Shampoo</a>
-                        <h5 class="text-primary mb-3">$99.99</h5>
-                        <a href="" class="btn btn-outline-primary px-3">Add To Cart</a>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.3s">
-                    <div class="product-item text-center border h-100 p-4">
-                        <img class="img-fluid mb-4" src="img/product-2.png" alt="">
-                        <div class="mb-2">
-                            <small class="fa fa-star text-primary"></small>
-                            <small class="fa fa-star text-primary"></small>
-                            <small class="fa fa-star text-primary"></small>
-                            <small class="fa fa-star text-primary"></small>
-                            <small class="fa fa-star text-primary"></small>
-                            <small>(99)</small>
-                        </div>
-                        <a href="" class="h6 d-inline-block mb-2">Anti-dandruff Shampoo</a>
-                        <h5 class="text-primary mb-3">$99.99</h5>
-                        <a href="" class="btn btn-outline-primary px-3">Add To Cart</a>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.5s">
-                    <div class="product-item text-center border h-100 p-4">
-                        <img class="img-fluid mb-4" src="img/product-1.png" alt="">
-                        <div class="mb-2">
-                            <small class="fa fa-star text-primary"></small>
-                            <small class="fa fa-star text-primary"></small>
-                            <small class="fa fa-star text-primary"></small>
-                            <small class="fa fa-star text-primary"></small>
-                            <small class="fa fa-star text-primary"></small>
-                            <small>(99)</small>
-                        </div>
-                        <a href="" class="h6 d-inline-block mb-2">Anti Hair Fall Shampoo</a>
-                        <h5 class="text-primary mb-3">$99.99</h5>
-                        <a href="" class="btn btn-outline-primary px-3">Add To Cart</a>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.7s">
-                    <div class="product-item text-center border h-100 p-4">
-                        <img class="img-fluid mb-4" src="img/product-2.png" alt="">
-                        <div class="mb-2">
-                            <small class="fa fa-star text-primary"></small>
-                            <small class="fa fa-star text-primary"></small>
-                            <small class="fa fa-star text-primary"></small>
-                            <small class="fa fa-star text-primary"></small>
-                            <small class="fa fa-star text-primary"></small>
-                            <small>(99)</small>
-                        </div>
-                        <a href="" class="h6 d-inline-block mb-2">Hair Growing Shampoo</a>
-                        <h5 class="text-primary mb-3">$99.99</h5>
-                        <a href="" class="btn btn-outline-primary px-3">Add To Cart</a>
-                    </div>
-                </div>
-                <div class="col-12 text-center">
-                    <a class="btn btn-primary py-2 px-4" href="">Load More Products</a>
                 </div>
             </div>
         </div>
     </div>
-    <!-- Product End -->
-
-
-    <!-- Newsletter Start -->
-    <div class="container-fluid newsletter bg-primary py-5 my-5">
-        <div class="container py-5">
-            <div class="mx-auto text-center wow fadeIn" data-wow-delay="0.1s" style="max-width: 600px;">
-                <h1 class="text-white mb-3"><span class="fw-light text-dark">Let's Subscribe</span> The Newsletter</h1>
-                <p class="text-white mb-4">Subscribe now to get 30% discount on any of our products</p>
-            </div>
-            <div class="row justify-content-center">
-                <div class="col-md-7 wow fadeIn" data-wow-delay="0.5s">
-                    <div class="position-relative w-100 mt-3 mb-2">
-                        <input class="form-control w-100 py-4 ps-4 pe-5" type="text" placeholder="Enter Your Email"
-                            style="height: 48px;">
-                        <button type="button" class="btn shadow-none position-absolute top-0 end-0 mt-1 me-2"><i
-                                class="fa fa-paper-plane text-white fs-4"></i></button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Newsletter End -->
+    <!-- Product Detail End -->
 
 
     <!-- Footer Start -->
     <div class="container-fluid bg-white footer">
         <div class="container py-5">
             <div class="row g-5">
-                <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.1s">
+                <div class="col-md-6 col-lg-4 wow fadeIn" data-wow-delay="0.1s">
                     <a href="index.html" class="d-inline-block mb-3">
-                        <h1 class="text-primary">Hairnic</h1>
+                        <h1 class="text-primary">Moto<span style="color: var(--accent);">Kleen</span></h1>
                     </a>
-                    <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis aliquet, erat non
-                        malesuada consequat, nibh erat tempus risus, vitae porttitor purus nisl vitae purus.</p>
+                    <p class="mb-0">Engineered for motorcycle and bike enthusiasts. Pro-grade cleaning, chain degreasing, and ceramic protection solutions that keep your machine in showroom condition.</p>
                 </div>
-                <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.3s">
+                <div class="col-md-6 col-lg-4 wow fadeIn" data-wow-delay="0.3s">
                     <h5 class="mb-4">Get In Touch</h5>
                     <p><i class="fa fa-map-marker-alt me-3"></i>123 Street, New York, USA</p>
                     <p><i class="fa fa-phone-alt me-3"></i>+012 345 67890</p>
@@ -287,41 +472,24 @@
                                 class="fab fa-linkedin-in"></i></a>
                     </div>
                 </div>
-                <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.5s">
-                    <h5 class="mb-4">Our Products</h5>
-                    <a class="btn btn-link" href="">Hair Shining Shampoo</a>
-                    <a class="btn btn-link" href="">Anti-dandruff Shampoo</a>
-                    <a class="btn btn-link" href="">Anti Hair Fall Shampoo</a>
-                    <a class="btn btn-link" href="">Hair Growing Shampoo</a>
-                    <a class="btn btn-link" href="">Anti smell Shampoo</a>
-                </div>
-                <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.7s">
+                <div class="col-md-6 col-lg-4 wow fadeIn" data-wow-delay="0.5s">
                     <h5 class="mb-4">Popular Link</h5>
                     <a class="btn btn-link" href="">About Us</a>
                     <a class="btn btn-link" href="">Contact Us</a>
                     <a class="btn btn-link" href="">Privacy Policy</a>
                     <a class="btn btn-link" href="">Terms & Condition</a>
-                    <a class="btn btn-link" href="">Career</a>
                 </div>
             </div>
         </div>
         <div class="container wow fadeIn" data-wow-delay="0.1s">
             <div class="copyright">
                 <div class="row">
-                    <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                    <div class="col-12 text-center mb-3 mb-md-0">
                         &copy; <a class="border-bottom" href="#">Your Site Name</a>, All Right Reserved.
 
                         <!--/*** The author’s attribution link must remain intact in the template. ***/-->
                         <!--/*** If you wish to remove this credit link, please purchase the Pro Version . ***/-->
                         Designed By <a class="border-bottom" href="https://htmlcodex.com">HTML Codex</a>
-                    </div>
-                    <div class="col-md-6 text-center text-md-end">
-                        <div class="footer-menu">
-                            <a href="">Home</a>
-                            <a href="">Cookies</a>
-                            <a href="">Help</a>
-                            <a href="">FAQs</a>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -344,6 +512,33 @@
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
+
+    <!-- Product Detail Page Javascript -->
+    <script>
+        function pdpSwapImg(el) {
+            document.getElementById('pdpMainImg').src = el.src;
+            document.querySelectorAll('.pdp-thumb').forEach(t => t.classList.remove('active'));
+            el.classList.add('active');
+        }
+
+        let pdpQtyCount = 1;
+        function pdpQty(delta) {
+            pdpQtyCount = Math.max(1, pdpQtyCount + delta);
+            document.getElementById('pdpQtyVal').innerText = pdpQtyCount;
+        }
+
+        function pdpSize(el) {
+            document.querySelectorAll('.pdp-size-btn').forEach(s => s.classList.remove('active'));
+            el.classList.add('active');
+        }
+
+        document.querySelectorAll('.pdp-swatch').forEach(sw => {
+            sw.addEventListener('click', () => {
+                document.querySelectorAll('.pdp-swatch').forEach(s => s.classList.remove('active'));
+                sw.classList.add('active');
+            });
+        });
+    </script>
 </body>
 
 </html>

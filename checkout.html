@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Checkout | MotoKleen - Secure Order Processing</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="motorcycle cleaning kit checkout, secure payment, fast shipping" name="keywords">
+    <meta content="Complete your MotoKleen order securely with fast express shipping and 30-day money-back guarantee." name="description">
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Spinner Start -->
+    <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div class="spinner-grow text-primary" style="width: 3rem; height: 3rem;" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+    <!-- Spinner End -->
+
+    <!-- Navbar Start -->
+    <div class="container-fluid sticky-top bg-white border-bottom">
+        <div class="container">
+            <nav class="navbar navbar-expand-lg navbar-light p-0">
+                <a href="index.html" class="navbar-brand">
+                    <h2 class="text-dark mb-0">Moto<span style="color: var(--accent);">Kleen</span></h2>
+                </a>
+                <button type="button" class="navbar-toggler ms-auto me-0" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <div class="navbar-nav ms-auto align-items-center">
+                        <a href="index.html" class="nav-item nav-link">Home</a>
+                        <a href="about.html" class="nav-item nav-link">About</a>
+                        <a href="product.html" class="nav-item nav-link">Products</a>
+                        <a href="contact.html" class="nav-item nav-link">Contact</a>
+                        <a href="javascript:void(0)" onclick="openCartDrawer()" class="nav-item nav-link ms-lg-3 position-relative cart-nav-btn" title="View Cart">
+                            <i class="fa fa-shopping-cart fs-5 text-dark"></i>
+                            <span id="navCartBadge" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="font-size: 10px; display: none;">0</span>
+                        </a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <!-- Navbar End -->
+
+    <!-- Checkout Main Section -->
+    <div class="checkout-section py-5">
+        <div class="container">
+
+            <!-- Breadcrumb Navigation -->
+            <div class="d-flex align-items-center gap-2 mb-4 text-muted small">
+                <a href="product.html" class="text-decoration-none text-muted"><i class="fa fa-arrow-left me-1"></i> Back to Product</a>
+                <span>&bull;</span>
+                <span class="text-dark fw-bold"><i class="fa fa-lock me-1 text-success"></i> Secure 256-bit SSL Checkout</span>
+            </div>
+
+            <!-- Empty Cart Notice (Hidden by default, shown if cart empty) -->
+            <div id="checkoutEmptyNotice" class="alert alert-warning d-none text-center py-5 my-4 rounded-3 shadow-sm">
+                <i class="fa fa-shopping-cart fa-3x text-muted mb-3 d-block"></i>
+                <h4 class="text-dark fw-bold mb-2">Your Cart is Currently Empty</h4>
+                <p class="text-muted mb-4">Please add items to your cart before proceeding to checkout.</p>
+                <a href="product.html" class="btn btn-primary rounded-pill px-5 py-3 fw-bold text-white" style="background: var(--accent); border-color: var(--accent);">
+                    Explore Bike Cleaning Kits &rarr;
+                </a>
+            </div>
+
+            <!-- Main Checkout Form & Summary Grid -->
+            <div id="checkoutContentRow" class="row g-5">
+
+                <!-- Left Column: Checkout Form -->
+                <div class="col-lg-7">
+                    <form id="checkoutForm" novalidate>
+
+                        <!-- 1. Customer Information Card -->
+                        <div class="checkout-card">
+                            <div class="checkout-card-header">
+                                <h5><i class="fa fa-user me-2" style="color: var(--accent);"></i>1. Customer Information</h5>
+                                <span class="badge bg-light text-dark border">Step 1 of 3</span>
+                            </div>
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <input type="email" class="form-control" id="custEmail" placeholder="name@example.com" required>
+                                        <label for="custEmail">Email Address *</label>
+                                        <div class="invalid-feedback">Please enter a valid email address.</div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <input type="tel" class="form-control" id="custPhone" placeholder="+1 (555) 000-0000" required>
+                                        <label for="custPhone">Phone Number *</label>
+                                        <div class="invalid-feedback">Please enter a valid phone number.</div>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="marketingOptIn" checked>
+                                        <label class="form-check-label small text-muted" for="marketingOptIn">
+                                            Send me tracking updates and pro motorcycle detailing tips
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 2. Shipping Address Card -->
+                        <div class="checkout-card">
+                            <div class="checkout-card-header">
+                                <h5><i class="fa fa-map-marker-alt me-2" style="color: var(--accent);"></i>2. Shipping Address</h5>
+                                <span class="badge bg-light text-dark border">Step 2 of 3</span>
+                            </div>
+                            <div class="row g-3">
+                                <div class="col-12">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" id="fullName" placeholder="John Doe" required minlength="2">
+                                        <label for="fullName">Full Name *</label>
+                                        <div class="invalid-feedback">Please enter your full name.</div>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" id="address1" placeholder="123 Main St" required>
+                                        <label for="address1">Street Address *</label>
+                                        <div class="invalid-feedback">Please enter your delivery street address.</div>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" id="address2" placeholder="Apt, Suite, Unit">
+                                        <label for="address2">Apartment, Suite, Unit (Optional)</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" id="city" placeholder="City" required>
+                                        <label for="city">City *</label>
+                                        <div class="invalid-feedback">Please enter your city.</div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" id="state" placeholder="State/Province" required>
+                                        <label for="state">State / Province *</label>
+                                        <div class="invalid-feedback">Please enter your state or province.</div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" id="postalCode" placeholder="Postal / ZIP" required>
+                                        <label for="postalCode">Postal Code / ZIP *</label>
+                                        <div class="invalid-feedback">Please enter your postal code.</div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <select class="form-select" id="countrySelect" required>
+                                            <option value="United States" selected>United States</option>
+                                            <option value="Canada">Canada</option>
+                                            <option value="United Kingdom">United Kingdom</option>
+                                            <option value="Australia">Australia</option>
+                                            <option value="Germany">Germany</option>
+                                            <option value="France">France</option>
+                                            <option value="Italy">Italy</option>
+                                            <option value="Spain">Spain</option>
+                                            <option value="Japan">Japan</option>
+                                        </select>
+                                        <label for="countrySelect">Country *</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 3. Shipping Method Card -->
+                        <div class="checkout-card">
+                            <div class="checkout-card-header">
+                                <h5><i class="fa fa-truck me-2" style="color: var(--accent);"></i>3. Delivery Method</h5>
+                                <span class="badge bg-light text-dark border">Step 3 of 3</span>
+                            </div>
+
+                            <label class="radio-select-card" for="shipStandard">
+                                <div class="d-flex align-items-center">
+                                    <input type="radio" name="shippingMethod" id="shipStandard" value="standard" checked onchange="handleShippingChange(this.value)">
+                                    <div>
+                                        <div class="fw-bold text-dark">Standard Tracked Delivery</div>
+                                        <small class="text-muted">Estimated 3 - 5 business days</small>
+                                    </div>
+                                </div>
+                                <div class="fw-bold" id="standardShipPriceDisplay">FREE</div>
+                            </label>
+
+                            <label class="radio-select-card" for="shipExpress">
+                                <div class="d-flex align-items-center">
+                                    <input type="radio" name="shippingMethod" id="shipExpress" value="express" onchange="handleShippingChange(this.value)">
+                                    <div>
+                                        <div class="fw-bold text-dark">Express Priority Courier</div>
+                                        <small class="text-muted">Estimated 1 - 2 business days (Air priority)</small>
+                                    </div>
+                                </div>
+                                <div class="fw-bold text-dark">$14.99</div>
+                            </label>
+                        </div>
+
+                        <!-- 4. Payment Method Card -->
+                        <div class="checkout-card">
+                            <div class="checkout-card-header">
+                                <h5><i class="fa fa-credit-card me-2" style="color: var(--accent);"></i>4. Payment Method</h5>
+                                <span class="badge bg-success text-white"><i class="fa fa-shield-alt me-1"></i>Encrypted</span>
+                            </div>
+
+                            <!-- Option 1: Credit / Debit Card -->
+                            <label class="radio-select-card mb-2" for="payCard">
+                                <div class="d-flex align-items-center">
+                                    <input type="radio" name="paymentMethod" id="payCard" value="card" checked onchange="handlePaymentToggle(this.value)">
+                                    <div>
+                                        <div class="fw-bold text-dark">Credit / Debit Card</div>
+                                        <small class="text-muted">Visa, MasterCard, Amex, Discover</small>
+                                    </div>
+                                </div>
+                                <div class="d-flex gap-1 text-muted fs-5">
+                                    <i class="fab fa-cc-visa"></i>
+                                    <i class="fab fa-cc-mastercard"></i>
+                                    <i class="fab fa-cc-amex"></i>
+                                </div>
+                            </label>
+
+                            <!-- Card Inputs Container -->
+                            <div id="cardFieldsContainer" class="bg-light p-3 rounded-3 mb-3 border">
+                                <div class="row g-2">
+                                    <div class="col-12">
+                                        <label class="small text-muted mb-1" for="cardNum">Card Number *</label>
+                                        <div class="input-group">
+                                            <span class="input-group-text bg-white"><i class="fa fa-credit-card text-muted"></i></span>
+                                            <input type="text" class="form-control" id="cardNum" placeholder="4532 &bull;&bull;&bull;&bull; &bull;&bull;&bull;&bull; 8942" maxlength="19">
+                                        </div>
+                                        <div class="invalid-feedback" id="cardNumError">Please enter a valid 16-digit card number.</div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="small text-muted mb-1" for="cardName">Name on Card *</label>
+                                        <input type="text" class="form-control" id="cardName" placeholder="JOHN DOE">
+                                        <div class="invalid-feedback" id="cardNameError">Please enter the cardholder name.</div>
+                                    </div>
+                                    <div class="col-6 col-md-3">
+                                        <label class="small text-muted mb-1" for="cardExpiry">Expiry *</label>
+                                        <input type="text" class="form-control text-center" id="cardExpiry" placeholder="MM/YY" maxlength="5">
+                                        <div class="invalid-feedback" id="cardExpiryError">Valid MM/YY.</div>
+                                    </div>
+                                    <div class="col-6 col-md-3">
+                                        <label class="small text-muted mb-1" for="cardCvc">CVC *</label>
+                                        <input type="password" class="form-control text-center" id="cardCvc" placeholder="CVC" maxlength="4">
+                                        <div class="invalid-feedback" id="cardCvcError">3-4 digits.</div>
+                                    </div>
+                                </div>
+                                <div class="small text-muted mt-2 d-flex align-items-center">
+                                    <i class="fa fa-lock text-success me-1"></i> Your payment details are encrypted with TLS 1.3 protocol.
+                                </div>
+                            </div>
+
+                            <!-- Option 2: Cash on Delivery -->
+                            <label class="radio-select-card" for="payCod">
+                                <div class="d-flex align-items-center">
+                                    <input type="radio" name="paymentMethod" id="payCod" value="cod" onchange="handlePaymentToggle(this.value)">
+                                    <div>
+                                        <div class="fw-bold text-dark">Cash on Delivery (COD)</div>
+                                        <small class="text-muted">Pay in cash when your package is handed over</small>
+                                    </div>
+                                </div>
+                                <i class="fa fa-money-bill-wave text-success fs-5"></i>
+                            </label>
+                        </div>
+
+                        <!-- 5. Order Notes (Optional) -->
+                        <div class="checkout-card">
+                            <div class="checkout-card-header">
+                                <h5><i class="fa fa-sticky-note me-2" style="color: var(--accent);"></i>5. Order Notes (Optional)</h5>
+                            </div>
+                            <textarea class="form-control" id="orderNotes" rows="2" placeholder="Special delivery instructions (e.g., Leave on back porch, call upon arrival)"></textarea>
+                        </div>
+
+                        <!-- Place Order Button -->
+                        <button type="submit" id="placeOrderBtn" class="btn btn-primary w-100 py-3 rounded-pill fw-bold text-white shadow-sm fs-5 d-flex align-items-center justify-content-center" style="background: var(--accent); border-color: var(--accent);">
+                            <i class="fa fa-lock me-2"></i>
+                            <span>Place Order &bull; </span>
+                            <span id="btnTotalDisplay" class="ms-1">$0.00</span>
+                        </button>
+                        <div class="text-center small text-muted mt-3">
+                            By placing this order you agree to MotoKleen's <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#policyModal">Terms of Service & Guarantee</a>.
+                        </div>
+
+                    </form>
+                </div>
+
+                <!-- Right Column: Sticky Order Summary -->
+                <div class="col-lg-5">
+                    <div class="checkout-summary-sticky">
+                        <div class="checkout-card">
+                            <div class="checkout-card-header">
+                                <h5>Order Summary (<span id="summaryItemCount">0</span>)</h5>
+                                <a href="product.html" class="small text-decoration-none" style="color: var(--accent);">Edit</a>
+                            </div>
+
+                            <!-- Items List -->
+                            <div id="summaryItemsList" class="mb-3 overflow-auto" style="max-height: 280px;" aria-label="Order summary items">
+                                <!-- Populated dynamically -->
+                            </div>
+
+                            <!-- Promo Code Box -->
+                            <div class="border-top pt-3 mb-3">
+                                <label for="promoInput" class="small fw-bold text-dark mb-1">Have a Promo Code?</label>
+                                <div class="input-group">
+                                    <input type="text" class="form-control" id="promoInput" placeholder="Try RIDE10" style="text-transform: uppercase;">
+                                    <button class="btn btn-dark fw-bold px-3" type="button" id="applyPromoBtn" onclick="handleApplyPromo()">Apply</button>
+                                </div>
+                                <div id="promoFeedback" class="small mt-1 d-none"></div>
+                            </div>
+
+                            <!-- Financial Breakdown -->
+                            <div class="border-top pt-3">
+                                <div class="d-flex justify-content-between mb-2 small text-muted">
+                                    <span>Subtotal</span>
+                                    <span id="summarySubtotal" class="fw-bold text-dark">$0.00</span>
+                                </div>
+                                <div id="summaryDiscountRow" class="d-none justify-content-between mb-2 small text-success">
+                                    <span>Promo Discount (RIDE10 - 10%)</span>
+                                    <span id="summaryDiscount">-$0.00</span>
+                                </div>
+                                <div class="d-flex justify-content-between mb-2 small text-muted">
+                                    <span>Shipping</span>
+                                    <span id="summaryShipping" class="fw-bold text-dark">$0.00</span>
+                                </div>
+                                <div class="d-flex justify-content-between mb-3 small text-muted">
+                                    <span>Estimated Taxes</span>
+                                    <span class="text-muted">Included</span>
+                                </div>
+                                <hr>
+                                <div class="d-flex justify-content-between align-items-center mb-0">
+                                    <span class="h6 mb-0 fw-bold text-dark">Total Amount</span>
+                                    <span id="summaryGrandTotal" class="h4 mb-0 fw-bold" style="color: var(--accent);">$0.00</span>
+                                </div>
+                            </div>
+
+                            <!-- Guarantee Badges -->
+                            <div class="bg-light p-3 rounded-3 mt-4 border text-center">
+                                <div class="d-flex justify-content-around small text-muted mb-2">
+                                    <div><i class="fa fa-undo text-success fs-5 mb-1 d-block"></i>30-Day Guarantee</div>
+                                    <div><i class="fa fa-truck text-primary fs-5 mb-1 d-block"></i>Tracked Shipping</div>
+                                    <div><i class="fa fa-shield-alt text-success fs-5 mb-1 d-block"></i>100% Paint Safe</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer Start -->
+    <div class="container-fluid bg-white footer border-top">
+        <div class="container py-5">
+            <div class="row g-5">
+                <div class="col-md-6 col-lg-4 wow fadeIn" data-wow-delay="0.1s">
+                    <a href="index.html" class="d-inline-block mb-3">
+                        <h1 class="text-primary">Moto<span style="color: var(--accent);">Kleen</span></h1>
+                    </a>
+                    <p class="mb-0">Engineered for motorcycle and bike enthusiasts. Pro-grade cleaning, chain degreasing, and ceramic protection solutions that keep your machine in showroom condition.</p>
+                </div>
+                <div class="col-md-6 col-lg-4 wow fadeIn" data-wow-delay="0.3s">
+                    <h5 class="mb-4">Get In Touch</h5>
+                    <p><i class="fa fa-map-marker-alt me-3"></i>Austin, Texas, USA</p>
+                    <p><i class="fa fa-phone-alt me-3"></i>+1 (800) 555-MOTO</p>
+                    <p><i class="fa fa-envelope me-3"></i>support@motokleen.com</p>
+                    <div class="d-flex pt-2">
+                        <a class="btn btn-square btn-outline-primary me-1" href="https://twitter.com" target="_blank" rel="noopener" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a class="btn btn-square btn-outline-primary me-1" href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a class="btn btn-square btn-outline-primary me-1" href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a class="btn btn-square btn-outline-primary me-1" href="https://youtube.com" target="_blank" rel="noopener" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 wow fadeIn" data-wow-delay="0.5s">
+                    <h5 class="mb-4">Quick Links</h5>
+                    <a class="btn btn-link" href="index.html">Home</a>
+                    <a class="btn btn-link" href="product.html">Pro Detailing Kit</a>
+                    <a class="btn btn-link" href="about.html">About MotoKleen</a>
+                    <a class="btn btn-link" href="contact.html">Contact & Support</a>
+                    <a class="btn btn-link" href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#policyModal">Shipping & Guarantee</a>
+                </div>
+            </div>
+        </div>
+        <div class="container wow fadeIn" data-wow-delay="0.1s">
+            <div class="copyright">
+                <div class="row">
+                    <div class="col-12 text-center mb-3 mb-md-0">
+                        &copy; <a class="border-bottom" href="index.html">MotoKleen</a>, All Rights Reserved.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer End -->
+
+    <!-- Policy Modal Start -->
+    <div class="modal fade" id="policyModal" tabindex="-1" aria-labelledby="policyModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header border-bottom">
+                    <h5 class="modal-title fw-bold" id="policyModalLabel"><i class="fa fa-shield-alt text-success me-2"></i>Shipping & Guarantee Policy</h5>
+                    <button type="button" class="btn-close shadow-none" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body py-4">
+                    <h6 class="fw-bold mb-2"><i class="fa fa-truck text-primary me-2"></i>Fast Express Shipping</h6>
+                    <p class="small text-muted mb-3">All orders are dispatched from our warehouse within 24 hours (Monday to Friday) via tracked express carrier. Orders over $75 qualify for FREE shipping.</p>
+                    <h6 class="fw-bold mb-2"><i class="fa fa-undo text-primary me-2"></i>30-Day Money-Back Guarantee</h6>
+                    <p class="small text-muted mb-3">If our bike cleaning kit does not outperform any cleaner you have ever used on your machine, simply contact support within 30 days for a full, hassle-free refund.</p>
+                    <h6 class="fw-bold mb-2"><i class="fa fa-lock text-primary me-2"></i>100% Safe Surface Guarantee</h6>
+                    <p class="small text-muted mb-0">Our formulations are certified safe for matte paint, gloss clear coats, carbon fiber, titanium, and rubber O-ring chains when used as directed.</p>
+                </div>
+                <div class="modal-footer border-top">
+                    <button type="button" class="btn btn-dark rounded-pill px-4" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Policy Modal End -->
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top" aria-label="Back to top"><i class="bi bi-arrow-up"></i></a>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/main.js"></script>
+
+    <!-- Shared Cart Module -->
+    <script src="js/cart.js"></script>
+
+    <!-- Checkout Page Controller Script -->
+    <script>
+        let currentShippingMethod = 'standard';
+
+        function escapeHTML(str) {
+            if (str === null || str === undefined) return '';
+            return String(str)
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#39;');
+        }
+
+        function handleShippingChange(method) {
+            currentShippingMethod = method;
+            renderOrderSummary();
+        }
+
+        function handlePaymentToggle(method) {
+            const cardBox = document.getElementById('cardFieldsContainer');
+            if (method === 'card') {
+                cardBox.classList.remove('d-none');
+            } else {
+                cardBox.classList.add('d-none');
+            }
+        }
+
+        function handleApplyPromo() {
+            const input = document.getElementById('promoInput');
+            const feedback = document.getElementById('promoFeedback');
+            const res = MotoKleenCart.applyPromo(input.value);
+
+            feedback.classList.remove('d-none', 'text-success', 'text-danger');
+            if (res.success) {
+                feedback.classList.add('text-success');
+                feedback.innerHTML = '<i class="fa fa-check-circle me-1"></i>' + res.message + ' <a href="javascript:void(0)" onclick="handleRemovePromo()" class="text-danger ms-2 text-decoration-none">Remove</a>';
+            } else {
+                feedback.classList.add('text-danger');
+                feedback.innerHTML = '<i class="fa fa-times-circle me-1"></i>' + res.message;
+            }
+            renderOrderSummary();
+        }
+
+        function handleRemovePromo() {
+            MotoKleenCart.removePromo();
+            document.getElementById('promoInput').value = '';
+            const feedback = document.getElementById('promoFeedback');
+            feedback.classList.add('d-none');
+            renderOrderSummary();
+        }
+
+        function renderOrderSummary() {
+            const items = MotoKleenCart.getItems();
+            const totals = MotoKleenCart.getTotals(currentShippingMethod);
+            const emptyNotice = document.getElementById('checkoutEmptyNotice');
+            const contentRow = document.getElementById('checkoutContentRow');
+
+            if (items.length === 0) {
+                emptyNotice.classList.remove('d-none');
+                contentRow.classList.add('d-none');
+                return;
+            } else {
+                emptyNotice.classList.add('d-none');
+                contentRow.classList.remove('d-none');
+            }
+
+            // Summary count
+            document.getElementById('summaryItemCount').textContent = totals.itemCount;
+
+            // Standard ship price radio update
+            const stdRadioPrice = document.getElementById('standardShipPriceDisplay');
+            if (stdRadioPrice) {
+                if (totals.subtotal >= totals.freeShippingThreshold) {
+                    stdRadioPrice.innerHTML = '<span class="badge bg-success">FREE</span>';
+                } else {
+                    stdRadioPrice.textContent = '$' + (6.99).toFixed(2);
+                }
+            }
+
+            // Render Item rows
+            const listContainer = document.getElementById('summaryItemsList');
+            let itemsHtml = '';
+            items.forEach(function (item) {
+                const lineTotal = (item.price * item.quantity).toFixed(2);
+                itemsHtml += `
+                    <div class="d-flex align-items-center justify-content-between py-2 border-bottom">
+                        <div class="d-flex align-items-center">
+                            <div class="position-relative me-3">
+                                <img src="${escapeHTML(item.image)}" class="checkout-item-thumb" alt="${escapeHTML(item.name)}">
+                                <span class="checkout-item-badge">${item.quantity}</span>
+                            </div>
+                            <div>
+                                <h6 class="mb-0 text-dark" style="font-size: 13px;">${escapeHTML(item.name)}</h6>
+                                <small class="text-muted" style="font-size: 11px;">${escapeHTML(item.variant)} &bull; ${escapeHTML(item.finish)}</small>
+                            </div>
+                        </div>
+                        <div class="fw-bold text-dark ps-2" style="font-size: 13px;">$${lineTotal}</div>
+                    </div>
+                `;
+            });
+            listContainer.innerHTML = itemsHtml;
+
+            // Financial breakdown
+            document.getElementById('summarySubtotal').textContent = '$' + totals.subtotal.toFixed(2);
+
+            const discountRow = document.getElementById('summaryDiscountRow');
+            const discountEl = document.getElementById('summaryDiscount');
+            if (totals.discount > 0) {
+                discountRow.classList.remove('d-none');
+                discountRow.classList.add('d-flex');
+                discountEl.textContent = '-$' + totals.discount.toFixed(2);
+            } else {
+                discountRow.classList.add('d-none');
+                discountRow.classList.remove('d-flex');
+            }
+
+            const shipEl = document.getElementById('summaryShipping');
+            if (totals.shipping === 0) {
+                shipEl.innerHTML = '<span class="badge bg-success">FREE</span>';
+            } else {
+                shipEl.textContent = '$' + totals.shipping.toFixed(2);
+            }
+
+            document.getElementById('summaryGrandTotal').textContent = '$' + totals.total.toFixed(2);
+            document.getElementById('btnTotalDisplay').textContent = '$' + totals.total.toFixed(2);
+
+            // Populate promo input if active
+            const promo = MotoKleenCart.getPromo();
+            if (promo) {
+                document.getElementById('promoInput').value = promo.code;
+                const feedback = document.getElementById('promoFeedback');
+                feedback.classList.remove('d-none', 'text-danger');
+                feedback.classList.add('text-success');
+                feedback.innerHTML = '<i class="fa fa-check-circle me-1"></i>Promo code ' + promo.code + ' applied (10% off) <a href="javascript:void(0)" onclick="handleRemovePromo()" class="text-danger ms-2 text-decoration-none">Remove</a>';
+            }
+        }
+
+        // Card number auto-spacing
+        document.getElementById('cardNum').addEventListener('input', function (e) {
+            let val = e.target.value.replace(/\D/g, '');
+            val = val.substring(0, 16);
+            let formatted = val.match(/.{1,4}/g)?.join(' ') || val;
+            e.target.value = formatted;
+        });
+
+        // Expiry date auto-slash
+        document.getElementById('cardExpiry').addEventListener('input', function (e) {
+            let val = e.target.value.replace(/\D/g, '').substring(0, 4);
+            if (val.length >= 3) {
+                e.target.value = val.substring(0, 2) + '/' + val.substring(2);
+            } else {
+                e.target.value = val;
+            }
+        });
+
+        // Checkout form submission
+        document.getElementById('checkoutForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const items = MotoKleenCart.getItems();
+            if (items.length === 0) {
+                alert('Your cart is empty. Please add items before checking out.');
+                window.location.href = 'product.html';
+                return;
+            }
+
+            // Validation flags
+            let isValid = true;
+            let firstInvalidEl = null;
+
+            function checkField(id, validator, errorId) {
+                const el = document.getElementById(id);
+                const valid = validator(el.value);
+                if (!valid) {
+                    el.classList.add('is-invalid');
+                    if (errorId) document.getElementById(errorId)?.classList.add('d-block');
+                    if (!firstInvalidEl) firstInvalidEl = el;
+                    isValid = false;
+                } else {
+                    el.classList.remove('is-invalid');
+                    if (errorId) document.getElementById(errorId)?.classList.remove('d-block');
+                }
+            }
+
+            // Validate Contact
+            checkField('custEmail', val => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val.trim()));
+            checkField('custPhone', val => val.trim().length >= 7);
+
+            // Validate Shipping Address
+            checkField('fullName', val => val.trim().length >= 2);
+            checkField('address1', val => val.trim().length >= 3);
+            checkField('city', val => val.trim().length >= 2);
+            checkField('state', val => val.trim().length >= 2);
+            checkField('postalCode', val => val.trim().length >= 3);
+
+            // Validate Card if Card payment is chosen
+            const selectedPayment = document.querySelector('input[name="paymentMethod"]:checked')?.value || 'card';
+            if (selectedPayment === 'card') {
+                const cardNumClean = document.getElementById('cardNum').value.replace(/\s/g, '');
+                checkField('cardNum', () => cardNumClean.length >= 15 && cardNumClean.length <= 16, 'cardNumError');
+                checkField('cardName', val => val.trim().length >= 2, 'cardNameError');
+                checkField('cardExpiry', val => /^(0[1-9]|1[0-2])\/\d{2}$/.test(val.trim()), 'cardExpiryError');
+                checkField('cardCvc', val => /^\d{3,4}$/.test(val.trim()), 'cardCvcError');
+            }
+
+            if (!isValid) {
+                if (firstInvalidEl) {
+                    firstInvalidEl.focus();
+                    firstInvalidEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+                return;
+            }
+
+            // Disable submit button & show processing state
+            const submitBtn = document.getElementById('placeOrderBtn');
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="fa fa-spinner fa-spin me-2"></i> Processing Your Order...';
+
+            // =========================================================================
+            // STRIPE / PAYMENT GATEWAY INTEGRATION HOOK (Production Setup)
+            // =========================================================================
+            // When connecting to live Stripe Checkout or Elements:
+            // 1. Send cart and customer details to your backend endpoint:
+            //    fetch('/api/create-checkout-session', {
+            //        method: 'POST',
+            //        headers: { 'Content-Type': 'application/json' },
+            //        body: JSON.stringify({ items: items, customer: customerData })
+            //    }).then(res => res.json()).then(data => stripe.redirectToCheckout({ sessionId: data.id }));
+            // =========================================================================
+
+            // Generate Order ID in MK-YYYYMMDD-XXXX format
+            const now = new Date();
+            const yyyy = now.getFullYear();
+            const mm = String(now.getMonth() + 1).padStart(2, '0');
+            const dd = String(now.getDate()).padStart(2, '0');
+            const randomCode = Math.floor(1000 + Math.random() * 9000);
+            const orderId = `MK-${yyyy}${mm}${dd}-${randomCode}`;
+
+            // Calculate Delivery Window
+            const deliveryDays = (currentShippingMethod === 'express') ? 2 : 4;
+            const deliveryDate = new Date();
+            deliveryDate.setDate(deliveryDate.getDate() + deliveryDays);
+            const deliveryFormatted = deliveryDate.toLocaleDateString('en-US', {
+                weekday: 'short', month: 'short', day: 'numeric', year: 'numeric'
+            });
+
+            const totals = MotoKleenCart.getTotals(currentShippingMethod);
+
+            // Construct Order Object
+            const orderRecord = {
+                orderId: orderId,
+                createdAt: now.toISOString(),
+                createdAtFormatted: now.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }),
+                estimatedDelivery: deliveryFormatted,
+                shippingMethod: (currentShippingMethod === 'express') ? 'Express Priority Courier (1-2 days)' : 'Standard Tracked Delivery (3-5 days)',
+                paymentMethod: (selectedPayment === 'card') ? 'Credit Card (•••• 8942)' : 'Cash on Delivery (COD)',
+                customer: {
+                    email: document.getElementById('custEmail').value.trim(),
+                    phone: document.getElementById('custPhone').value.trim(),
+                    fullName: document.getElementById('fullName').value.trim(),
+                    address1: document.getElementById('address1').value.trim(),
+                    address2: document.getElementById('address2').value.trim(),
+                    city: document.getElementById('city').value.trim(),
+                    state: document.getElementById('state').value.trim(),
+                    postalCode: document.getElementById('postalCode').value.trim(),
+                    country: document.getElementById('countrySelect').value,
+                    notes: document.getElementById('orderNotes').value.trim()
+                },
+                items: items,
+                totals: {
+                    subtotal: totals.subtotal,
+                    discount: totals.discount,
+                    shipping: totals.shipping,
+                    total: totals.total,
+                    promoCode: totals.promo ? totals.promo.code : null
+                }
+            };
+
+            // Simulate server roundtrip then persist & redirect
+            setTimeout(function () {
+                try {
+                    localStorage.setItem('motokleen_last_order', JSON.stringify(orderRecord));
+                } catch (err) {
+                    console.error('Could not save order:', err);
+                }
+
+                // Clear active cart & promo
+                MotoKleenCart.clear();
+
+                // Redirect to confirmation page
+                window.location.href = 'thank-you.html';
+            }, 900);
+        });
+
+        // Initialize Checkout View
+        document.addEventListener('DOMContentLoaded', function () {
+            renderOrderSummary();
+            window.addEventListener('motokleen:cart-changed', function () {
+                renderOrderSummary();
+            });
+        });
+    </script>
+</body>
+
+</html>
+

@@ -265,6 +265,43 @@ img.animated.pulse {
     color: var(--accent) !important;
 }
 
+/* Navbar Cart Icon Button & Badge */
+.cart-nav-btn {
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background-color: rgba(26, 26, 26, 0.06);
+    color: var(--primary) !important;
+    transition: all 0.25s ease !important;
+    margin-right: 0 !important;
+    padding: 0 !important;
+    cursor: pointer;
+}
+
+.cart-nav-btn:hover {
+    background-color: rgba(255, 90, 0, 0.12) !important;
+    color: var(--accent) !important;
+    transform: translateY(-1px);
+}
+
+.cart-nav-btn i {
+    color: inherit !important;
+    font-size: 1.15rem;
+}
+
+.cart-nav-btn .badge {
+    background-color: var(--accent) !important;
+    color: #FFFFFF !important;
+    font-size: 11px !important;
+    font-weight: 700;
+    padding: 0.25em 0.5em;
+    border: 2px solid #FFFFFF;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+}
+
 .navbar .dropdown-toggle::after {
     border: none;
     content: "\f107";
@@ -1449,3 +1486,145 @@ hr.bg-primary {
     padding: 4.5rem 0;
     background: var(--base-light-surface);
 }
+
+/********** MotoKleen Checkout & Order Confirmation Styles **********/
+.checkout-section {
+    background: #FAFAFA;
+    min-height: 80vh;
+}
+
+.checkout-card {
+    background: #FFFFFF;
+    border: 1px solid var(--base-light-border);
+    border-radius: 12px;
+    padding: 1.75rem;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.03);
+    margin-bottom: 1.5rem;
+}
+
+.checkout-card-header {
+    border-bottom: 1px solid var(--base-light-border);
+    padding-bottom: 1rem;
+    margin-bottom: 1.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.checkout-card-header h5 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--text-heading);
+    margin: 0;
+}
+
+.checkout-summary-sticky {
+    position: sticky;
+    top: 90px;
+}
+
+/* Radio selection cards for Shipping & Payment */
+.radio-select-card {
+    border: 1.5px solid var(--base-light-border);
+    border-radius: 10px;
+    padding: 1rem 1.25rem;
+    margin-bottom: 0.75rem;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    background: #FFFFFF;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.radio-select-card:hover {
+    border-color: rgba(255, 90, 0, 0.45);
+    background: #FFFDFB;
+}
+
+.radio-select-card.active,
+.radio-select-card:has(input[type="radio"]:checked) {
+    border-color: var(--accent);
+    background: #FFF9F5;
+    box-shadow: 0 0 0 1px var(--accent);
+}
+
+.radio-select-card input[type="radio"] {
+    accent-color: var(--accent);
+    width: 18px;
+    height: 18px;
+    margin-right: 0.75rem;
+}
+
+/* Form floating override focus styles */
+.form-floating > .form-control:focus,
+.form-floating > .form-select:focus,
+.form-control:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(255, 90, 0, 0.15);
+}
+
+/* Checkout item row */
+.checkout-item-thumb {
+    width: 64px;
+    height: 64px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 1px solid var(--base-light-border);
+    background: #FFFFFF;
+}
+
+.checkout-item-badge {
+    position: absolute;
+    top: -6px;
+    right: -6px;
+    background: #4A4A4A;
+    color: #FFFFFF;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    font-size: 11px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Thank You Confirmation Styles */
+.thank-you-card {
+    background: #FFFFFF;
+    border: 1px solid var(--base-light-border);
+    border-radius: 16px;
+    padding: 2.5rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.order-badge-pill {
+    background: rgba(255, 90, 0, 0.1);
+    color: var(--accent);
+    padding: 0.35rem 1rem;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    display: inline-block;
+}
+
+/* Visible focus states for accessibility */
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+}
+
+/* Offcanvas Cart Drawer Fallback & Enhancement */
+.offcanvas.show {
+    visibility: visible !important;
+    transform: none !important;
+}
+.offcanvas-backdrop.show {
+    opacity: 0.5 !important;
+}
+
+

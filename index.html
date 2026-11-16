@@ -61,7 +61,10 @@
                         <a href="about.html" class="nav-item nav-link">About</a>
                         <a href="product.html" class="nav-item nav-link">Products</a>
                         <a href="contact.html" class="nav-item nav-link">Contact</a>
-                        <a href="product.html" class="nav-item nav-link ms-lg-3" title="View Products & Cart"><i class="fa fa-shopping-cart fs-5 text-dark"></i></a>
+                        <a href="javascript:void(0)" onclick="openCartDrawer()" class="nav-item nav-link ms-lg-3 position-relative cart-nav-btn" title="View Cart">
+                            <i class="fa fa-shopping-cart fs-5 text-dark"></i>
+                            <span id="navCartBadge" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="font-size: 10px; display: none;">0</span>
+                        </a>
                     </div>
                 </div>
             </nav>
@@ -135,7 +138,12 @@
                     <h1 class="text-primary mb-4">A Spotless Machine <span class="fw-light text-dark">Is A Symbol Of True Passion</span></h1>
                     <p class="mb-4">Engineered specifically for motorcycles, dirt bikes, and sports machines. Our all-in-one cleaning kit penetrates stubborn road grime, chain splatter, bug residue, and brake dust without stripping protective clear coats or scratching matte fairings.</p>
                     <p class="mb-4">From track day cleanups to muddy adventure rides, keep every bolt, swingarm, and exhaust pipe gleaming with showroom brilliance.</p>
-                    <a class="btn btn-primary py-2 px-4" href="product.html">Shop The Kit</a>
+                    <div class="d-flex flex-wrap gap-3">
+                        <a class="btn btn-primary py-3 px-4 rounded-pill fw-bold text-white shadow-sm" href="product.html" style="background: var(--accent); border-color: var(--accent);">View Product Details</a>
+                        <button type="button" class="btn btn-dark py-3 px-4 rounded-pill fw-bold" data-motokleen-add data-variant="Standard (5-Piece)" data-price="34.99" data-finish="Matte Safe">
+                            <i class="fa fa-shopping-cart me-2"></i>Add Standard Kit ($34.99)
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -227,8 +235,13 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 wow fadeIn" data-wow-delay="0.1s">
-                    <img class="img-fluid rounded shadow" src="img/bike-cleaning-kit.jpg" alt="Bike Cleaning Kit">
+                <div class="col-lg-4 text-center wow fadeIn" data-wow-delay="0.1s">
+                    <img class="img-fluid rounded shadow mb-3" src="img/bike-cleaning-kit.jpg" alt="Bike Cleaning Kit">
+                    <div>
+                        <button type="button" class="btn btn-primary btn-sm rounded-pill px-4 py-2 fw-bold text-white shadow-sm" data-motokleen-add data-variant="Pro Kit (8-Piece)" data-price="49.99" data-finish="Matte Safe" style="background: var(--accent); border-color: var(--accent);">
+                            <i class="fa fa-shopping-cart me-1"></i> Add Pro Kit ($49.99)
+                        </button>
+                    </div>
                 </div>
                 <div class="col-lg-4 wow fadeIn" data-wow-delay="0.5s">
                     <div class="row g-5">
@@ -368,6 +381,7 @@
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
+    <script src="js/cart.js"></script>
     <!-- Policy Modal Start -->
     <div class="modal fade" id="policyModal" tabindex="-1" aria-labelledby="policyModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
@@ -378,7 +392,7 @@
                 </div>
                 <div class="modal-body py-4">
                     <h6 class="fw-bold mb-2"><i class="fa fa-truck text-primary me-2"></i>Fast Express Shipping</h6>
-                    <p class="small text-muted mb-3">All orders are dispatched from our warehouse within 24 hours (Monday to Friday) via tracked express carrier. Orders over $35 qualify for FREE express shipping.</p>
+                    <p class="small text-muted mb-3">All orders are dispatched from our warehouse within 24 hours (Monday to Friday) via tracked express carrier. Orders over $75 qualify for FREE shipping.</p>
                     <h6 class="fw-bold mb-2"><i class="fa fa-undo text-primary me-2"></i>30-Day Money-Back Guarantee</h6>
                     <p class="small text-muted mb-3">If our bike cleaning kit does not outperform any cleaner you have ever used on your machine, simply contact support within 30 days for a full, hassle-free refund.</p>
                     <h6 class="fw-bold mb-2"><i class="fa fa-lock text-primary me-2"></i>100% Safe Surface Guarantee</h6>

@@ -45,11 +45,11 @@
 
 
     <!-- Navbar Start -->
-    <div class="container-fluid sticky-top">
+    <div class="container-fluid sticky-top bg-white border-bottom">
         <div class="container">
             <nav class="navbar navbar-expand-lg navbar-light p-0">
                 <a href="index.html" class="navbar-brand">
-                    <h2 class="text-white">Moto<span style="color: var(--accent);">Kleen</span></h2>
+                    <h2 class="text-dark mb-0">Moto<span style="color: var(--accent);">Kleen</span></h2>
                 </a>
                 <button type="button" class="navbar-toggler ms-auto me-0" data-bs-toggle="collapse"
                     data-bs-target="#navbarCollapse">
@@ -61,8 +61,10 @@
                         <a href="about.html" class="nav-item nav-link">About</a>
                         <a href="product.html" class="nav-item nav-link">Products</a>
                         <a href="contact.html" class="nav-item nav-link">Contact</a>
-                        <a href="product.html" class="nav-item nav-link ms-lg-3" title="View Products & Cart"><i
-                                class="fa fa-shopping-cart fs-5 text-white"></i></a>
+                        <a href="javascript:void(0)" onclick="openCartDrawer()" class="nav-item nav-link ms-lg-3 position-relative cart-nav-btn" title="View Cart" aria-label="View Shopping Cart">
+                            <i class="fa fa-shopping-cart fs-5 text-dark"></i>
+                            <span id="navCartBadge" class="position-absolute top-0 start-100 translate-middle badge rounded-pill" style="display: none;">0</span>
+                        </a>
                     </div>
                 </div>
             </nav>
@@ -151,6 +153,7 @@
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
+    <script src="js/cart.js"></script>
     <!-- Policy Modal Start -->
     <div class="modal fade" id="policyModal" tabindex="-1" aria-labelledby="policyModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">

@@ -1627,4 +1627,32 @@ select:focus-visible {
     opacity: 0.5 !important;
 }
 
+/* Product Reviews Helpers */
+.pdp-review-img {
+    width: 90px;
+    height: 90px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 1px solid var(--base-light-border);
+    transition: transform 0.2s ease;
+    cursor: pointer;
+}
+.pdp-review-img:hover {
+    transform: scale(1.05);
+}
+.pdp-avatar-initials {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: #212529;
+    color: #FFFFFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 14px;
+    flex-shrink: 0;
+}
+
+
 

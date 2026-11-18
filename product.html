@@ -70,6 +70,18 @@
             border-radius: 6px;
         }
 
+        @media (max-width: 767.98px) {
+            .pdp-main-img {
+                height: 320px;
+            }
+
+            .pdp-thumb-list .pdp-thumb {
+                flex: 1 1 0;
+                min-width: 0;
+                height: 76px;
+            }
+        }
+
         .pdp-badge {
             background: #f1f1f1;
             color: #495057;
@@ -242,11 +254,11 @@
                 <!-- Gallery -->
                 <div class="col-lg-6">
                     <div class="row g-3">
-                        <div class="col-10">
+                        <div class="col-12 col-md-10">
                             <img id="pdpMainImg" class="pdp-main-img" src="img/bike-cleaning-kit.jpg" onerror="this.src='img/bike-gallery-1.jpg'" alt="Complete Bike Cleaning & Care Kit">
                         </div>
-                        <div class="col-2">
-                            <div class="d-flex flex-column gap-3">
+                        <div class="col-12 col-md-2">
+                            <div class="pdp-thumb-list d-flex flex-row flex-md-column gap-2 gap-md-3">
                                 <img class="pdp-thumb active" src="img/bike-cleaning-kit.jpg" onerror="this.src='img/bike-gallery-1.jpg'" onclick="pdpSwapImg(this)" alt="Main Kit">
                                 <img class="pdp-thumb" src="img/kit-showcase.png" onerror="this.src='img/bike-gallery-1.jpg'" onclick="pdpSwapImg(this)" alt="Kit Showcase">
                                 <img class="pdp-thumb" src="img/bike-gallery-1.jpg" onclick="pdpSwapImg(this)" alt="Detailing">

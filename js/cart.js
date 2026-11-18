@@ -9,22 +9,29 @@
 
     const STORAGE_KEY = 'motokleen_cart';
     const PROMO_KEY = 'motokleen_promo';
-    const FREE_SHIPPING_THRESHOLD = 75.00;
-    const STANDARD_SHIPPING_FLAT = 6.99;
-    const EXPRESS_SHIPPING_FLAT = 14.99;
+    const FREE_SHIPPING_THRESHOLD = 4000;
+    const STANDARD_SHIPPING_FLAT = 200;
+    const EXPRESS_SHIPPING_FLAT = 450;
     const MAX_QTY = 10;
     const MIN_QTY = 1;
 
     // Default product details for easy fallback
     const DEFAULT_PRODUCT = {
-        id: 'BK-CLN-PRO08',
-        name: 'Pro Ceramic Bike Wash & Chain Detailing Kit',
-        variant: 'Pro Kit (8-Piece)',
+        id: 'BK-CLN-KIT',
+        name: 'Complete Bike Cleaning & Care Kit',
+        variant: 'Complete Care Kit',
         finish: 'Matte Safe',
-        price: 49.99,
+        price: 2200,
         quantity: 1,
         image: 'img/bike-cleaning-kit.jpg'
     };
+
+    /**
+     * Formats numeric amount as Pakistani Rupees (PKR)
+     */
+    function formatPKR(amount) {
+        return 'PKR ' + Math.round(Number(amount) || 0).toLocaleString('en-PK');
+    }
 
     /**
      * Sanitizes string to prevent HTML/XSS injection
@@ -53,6 +60,8 @@
      * MotoKleen Cart Controller Object
      */
     const MotoKleenCart = {
+        formatPrice: formatPKR,
+
         /**
          * Loads items safely from localStorage
          * Handles corrupted JSON, schema verification, and quantity bounds
@@ -65,15 +74,20 @@
                 if (!Array.isArray(parsed)) return [];
                 return parsed.filter(item => {
                     return item && typeof item === 'object' && typeof item.price === 'number' && !isNaN(item.price);
-                }).map(item => ({
-                    id: String(item.id || DEFAULT_PRODUCT.id),
-                    name: String(item.name || DEFAULT_PRODUCT.name),
-                    variant: String(item.variant || DEFAULT_PRODUCT.variant),
-                    finish: String(item.finish || DEFAULT_PRODUCT.finish),
-                    price: Math.max(0, Number(item.price)),
-                    quantity: Math.min(MAX_QTY, Math.max(MIN_QTY, parseInt(item.quantity, 10) || 1)),
-                    image: String(item.image || DEFAULT_PRODUCT.image)
-                }));
+                }).map(item => {
+                    const rawPrice = Math.max(0, Number(item.price));
+                    // Automatically migrate any legacy USD prices (< 200) to PKR 2,200
+                    const normalizedPrice = (rawPrice > 0 && rawPrice < 200) ? DEFAULT_PRODUCT.price : rawPrice;
+                    return {
+                        id: String(item.id || DEFAULT_PRODUCT.id),
+                        name: String(item.name || DEFAULT_PRODUCT.name),
+                        variant: String(item.variant || DEFAULT_PRODUCT.variant),
+                        finish: String(item.finish || DEFAULT_PRODUCT.finish),
+                        price: normalizedPrice,
+                        quantity: Math.min(MAX_QTY, Math.max(MIN_QTY, parseInt(item.quantity, 10) || 1)),
+                        image: String(item.image || DEFAULT_PRODUCT.image)
+                    };
+                });
             } catch (err) {
                 console.warn('[MotoKleen Cart] Corrupted cart data reset:', err);
                 localStorage.removeItem(STORAGE_KEY);
@@ -268,8 +282,8 @@
             } else if (method === 'express') {
                 shipping = EXPRESS_SHIPPING_FLAT;
             } else {
-                // Standard shipping is free at or above $75 threshold
-                shipping = (subtotal >= FREE_SHIPPING_THRESHOLD) ? 0.00 : STANDARD_SHIPPING_FLAT;
+                // Standard shipping is free at or above PKR 4,000 threshold
+                shipping = (subtotal >= FREE_SHIPPING_THRESHOLD) ? 0 : STANDARD_SHIPPING_FLAT;
             }
 
             const total = (items.length === 0) ? 0 : Math.max(0, discountedSubtotal + shipping);
@@ -395,7 +409,7 @@
                             <div class="bg-light p-3 rounded-3 mb-3 border">
                                 <div class="d-flex justify-content-between align-items-center mb-1" style="font-size: 13px;">
                                     <span class="fw-bold text-dark" id="freeShippingText">
-                                        <i class="fa fa-truck me-1" style="color: var(--accent);"></i> Add $75.00 for FREE Express Shipping
+                                        <i class="fa fa-truck me-1" style="color: var(--accent);"></i> Add PKR 4,000 for FREE Standard Shipping
                                     </span>
                                     <span id="freeShippingStatus" class="fw-bold text-muted small">0%</span>
                                 </div>
@@ -425,11 +439,11 @@
                             <div id="cartFooterArea" class="border-top pt-3 mt-auto">
                                 <div id="cartPromoRow" class="d-none mb-2 justify-content-between text-success small">
                                     <span>Promo Code (RIDE10)</span>
-                                    <span id="cartDrawerDiscount">-$0.00</span>
+                                    <span id="cartDrawerDiscount">-PKR 0</span>
                                 </div>
                                 <div class="d-flex justify-content-between align-items-center mb-1">
                                     <span class="text-muted">Subtotal</span>
-                                    <span id="cartDrawerSubtotal" class="fw-bold fs-5 text-dark">$0.00</span>
+                                    <span id="cartDrawerSubtotal" class="fw-bold fs-5 text-dark">PKR 0</span>
                                 </div>
                                 <div class="d-flex justify-content-between align-items-center mb-3 text-muted small">
                                     <span>Standard Shipping</span>
@@ -500,7 +514,7 @@
                     freeShippingBar.style.width = '100%';
                     freeShippingBar.className = 'progress-bar bg-success';
                 } else {
-                    freeShippingText.innerHTML = '<i class="fa fa-truck me-1" style="color: var(--accent);"></i> Add <strong>$' + totals.freeShippingRemaining.toFixed(2) + '</strong> more for FREE Shipping';
+                    freeShippingText.innerHTML = '<i class="fa fa-truck me-1" style="color: var(--accent);"></i> Add <strong>' + formatPKR(totals.freeShippingRemaining) + '</strong> more for FREE Shipping';
                     freeShippingStatus.textContent = totals.freeShippingProgress + '%';
                     freeShippingStatus.className = 'fw-bold text-muted small';
                     freeShippingBar.style.width = totals.freeShippingProgress + '%';
@@ -525,7 +539,7 @@
 
                     let html = '';
                     items.forEach(function (item, idx) {
-                        const lineTotal = (item.price * item.quantity).toFixed(2);
+                        const lineTotal = formatPKR(item.price * item.quantity);
                         html += `
                             <div class="card mb-3 border-0 bg-light p-2 rounded-3">
                                 <div class="row g-2 align-items-center">
@@ -546,7 +560,7 @@
                                             <span class="badge bg-white text-muted border">${escapeHTML(item.finish)}</span>
                                         </div>
                                         <div class="d-flex justify-content-between align-items-center">
-                                            <span class="fw-bold text-dark" style="font-size: 14px;">$${lineTotal}</span>
+                                            <span class="fw-bold text-dark" style="font-size: 14px;">${lineTotal}</span>
                                             <div class="input-group input-group-sm" style="width: 96px;">
                                                 <button type="button" class="btn btn-white border px-2 py-0" onclick="MotoKleenCart.changeQuantity(${idx}, -1)" aria-label="Decrease quantity" ${item.quantity <= 1 ? 'disabled' : ''}>-</button>
                                                 <span class="form-control text-center bg-white px-1 py-0 fw-bold border-top border-bottom" style="font-size: 13px; max-width: 36px; line-height: 24px;">${item.quantity}</span>
@@ -565,7 +579,7 @@
             // 5. Update Subtotal and Promo in Drawer Footer
             const subtotalEl = document.getElementById('cartDrawerSubtotal');
             if (subtotalEl) {
-                subtotalEl.textContent = '$' + totals.subtotal.toFixed(2);
+                subtotalEl.textContent = formatPKR(totals.subtotal);
             }
 
             const promoRow = document.getElementById('cartPromoRow');
@@ -574,7 +588,7 @@
                 if (totals.discount > 0) {
                     promoRow.classList.remove('d-none');
                     promoRow.classList.add('d-flex');
-                    discountEl.textContent = '-$' + totals.discount.toFixed(2);
+                    discountEl.textContent = '-' + formatPKR(totals.discount);
                 } else {
                     promoRow.classList.add('d-none');
                     promoRow.classList.remove('d-flex');
@@ -586,7 +600,7 @@
                 if (totals.isFreeShippingUnlocked) {
                     shippingText.innerHTML = '<span class="text-success fw-bold">FREE</span>';
                 } else {
-                    shippingText.textContent = '$' + STANDARD_SHIPPING_FLAT.toFixed(2);
+                    shippingText.textContent = formatPKR(STANDARD_SHIPPING_FLAT);
                 }
             }
         },
@@ -610,17 +624,17 @@
                 const addTrigger = e.target.closest('[data-motokleen-add]');
                 if (addTrigger) {
                     e.preventDefault();
-                    const variant = addTrigger.getAttribute('data-variant') || 'Standard (5-Piece)';
-                    const price = parseFloat(addTrigger.getAttribute('data-price')) || 34.99;
-                    const finish = addTrigger.getAttribute('data-finish') || 'Matte Safe';
+                    const variant = addTrigger.getAttribute('data-variant') || DEFAULT_PRODUCT.variant;
+                    const price = parseFloat(addTrigger.getAttribute('data-price')) || DEFAULT_PRODUCT.price;
+                    const finish = addTrigger.getAttribute('data-finish') || DEFAULT_PRODUCT.finish;
                     this.addItem({
-                        id: addTrigger.getAttribute('data-id') || 'BK-CLN-STD05',
-                        name: addTrigger.getAttribute('data-name') || 'Pro Ceramic Bike Wash & Chain Detailing Kit',
+                        id: addTrigger.getAttribute('data-id') || DEFAULT_PRODUCT.id,
+                        name: addTrigger.getAttribute('data-name') || DEFAULT_PRODUCT.name,
                         variant: variant,
                         finish: finish,
                         price: price,
                         quantity: 1,
-                        image: addTrigger.getAttribute('data-image') || 'img/bike-cleaning-kit.jpg'
+                        image: addTrigger.getAttribute('data-image') || DEFAULT_PRODUCT.image
                     });
                 }
 

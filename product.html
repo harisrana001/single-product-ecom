@@ -269,8 +269,8 @@
                     </div>
 
                     <div class="mb-4">
-                        <span id="pdpPriceDisplay" class="h3 text-dark fw-bold">$49.99</span>
-                        <span id="pdpOldPriceDisplay" class="pdp-old-price">$69.99</span>
+                        <span id="pdpPriceDisplay" class="h3 text-dark fw-bold">PKR 2,200</span>
+                        <span id="pdpOldPriceDisplay" class="pdp-old-price">PKR 2,800</span>
                     </div>
 
                     <div class="row mb-4">
@@ -290,11 +290,9 @@
                     </div>
 
                     <div class="mb-4">
-                        <p class="fw-bold mb-2">Kit Size</p>
+                        <p class="fw-bold mb-2">Kit Edition</p>
                         <div class="d-flex flex-wrap gap-2">
-                            <span class="pdp-size-btn" onclick="pdpSize(this)">Standard (5-Piece)</span>
-                            <span class="pdp-size-btn active" onclick="pdpSize(this)">Pro Kit (8-Piece)</span>
-                            <span class="pdp-size-btn" onclick="pdpSize(this)">Ultimate Garage (12-Piece)</span>
+                            <span class="pdp-size-btn active" onclick="pdpSize(this)">Complete Care Kit</span>
                         </div>
                     </div>
 
@@ -305,7 +303,7 @@
 
                     <hr>
 
-                    <p id="pdpSkuDisplay" class="mb-1 text-muted" style="font-size: 14px;">SKU: BK-CLN-PRO08</p>
+                    <p id="pdpSkuDisplay" class="mb-1 text-muted" style="font-size: 14px;">SKU: BK-CLN-KIT</p>
                     <p class="mb-2 text-muted" style="font-size: 14px;">Tags: Bike Wash, Chain Degreaser, Ceramic Protect, Motorcycle Care</p>
                     <div class="d-flex align-items-center gap-2">
                         <span class="text-muted" style="font-size: 14px;">Share:</span>
@@ -742,14 +740,12 @@
                 </div>
                 <div class="col-md-6 col-lg-4 wow fadeIn" data-wow-delay="0.3s">
                     <h5 class="mb-4">Get In Touch</h5>
-                    <p><i class="fa fa-map-marker-alt me-3"></i>Austin, Texas, USA</p>
+                    <p><i class="fa fa-map-marker-alt me-3"></i>Islamabad, Pakistan</p>
                     <p><i class="fa fa-phone-alt me-3"></i>+1 (800) 555-MOTO</p>
                     <p><i class="fa fa-envelope me-3"></i>support@motokleen.com</p>
                     <div class="d-flex pt-2">
-                        <a class="btn btn-square btn-outline-primary me-1" href="https://twitter.com" target="_blank" rel="noopener" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
                         <a class="btn btn-square btn-outline-primary me-1" href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
                         <a class="btn btn-square btn-outline-primary me-1" href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                        <a class="btn btn-square btn-outline-primary me-1" href="https://youtube.com" target="_blank" rel="noopener" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-4 wow fadeIn" data-wow-delay="0.5s">
@@ -796,12 +792,13 @@
     <!-- Product Detail Page Javascript -->
     <script>
         const pricing = {
-            "Standard (5-Piece)": { price: 34.99, old: 49.99, sku: "BK-CLN-STD05" },
-            "Pro Kit (8-Piece)": { price: 49.99, old: 69.99, sku: "BK-CLN-PRO08" },
-            "Ultimate Garage (12-Piece)": { price: 79.99, old: 109.99, sku: "BK-CLN-ULT12" }
+            "Complete Care Kit": { price: 2200, old: 2800, sku: "BK-CLN-KIT" },
+            "Standard (5-Piece)": { price: 2200, old: 2800, sku: "BK-CLN-KIT" },
+            "Pro Kit (8-Piece)": { price: 2200, old: 2800, sku: "BK-CLN-KIT" },
+            "Ultimate Garage (12-Piece)": { price: 2200, old: 2800, sku: "BK-CLN-KIT" }
         };
 
-        let currentKitSize = "Pro Kit (8-Piece)";
+        let currentKitSize = "Complete Care Kit";
         let currentFormula = "Matte Safe";
         let pdpQtyCount = 1;
 
@@ -820,9 +817,12 @@
             document.querySelectorAll('.pdp-size-btn').forEach(s => s.classList.remove('active'));
             el.classList.add('active');
             currentKitSize = el.innerText.trim();
-            const p = pricing[currentKitSize] || pricing["Pro Kit (8-Piece)"];
-            document.getElementById('pdpPriceDisplay').innerText = "$" + p.price.toFixed(2);
-            document.getElementById('pdpOldPriceDisplay').innerText = "$" + p.old.toFixed(2);
+            const p = pricing[currentKitSize] || pricing["Complete Care Kit"];
+            const fmt = (window.MotoKleenCart && window.MotoKleenCart.formatPrice)
+                ? window.MotoKleenCart.formatPrice
+                : (v => "PKR " + Math.round(v).toLocaleString('en-PK'));
+            document.getElementById('pdpPriceDisplay').innerText = fmt(p.price);
+            document.getElementById('pdpOldPriceDisplay').innerText = fmt(p.old);
             document.getElementById('pdpSkuDisplay').innerText = "SKU: " + p.sku;
         }
 
@@ -835,11 +835,11 @@
         });
 
         function pdpAddToCart(shouldOpenDrawer = true) {
-            const p = pricing[currentKitSize] || pricing["Pro Kit (8-Piece)"];
+            const p = pricing[currentKitSize] || pricing["Complete Care Kit"];
             if (window.MotoKleenCart) {
                 MotoKleenCart.addItem({
                     id: p.sku,
-                    name: "Pro Ceramic Bike Wash & Chain Detailing Kit",
+                    name: "Complete Bike Cleaning & Care Kit",
                     variant: currentKitSize,
                     finish: currentFormula,
                     price: p.price,
@@ -868,7 +868,7 @@
                 </div>
                 <div class="modal-body py-4">
                     <h6 class="fw-bold mb-2"><i class="fa fa-truck text-primary me-2"></i>Fast Express Shipping</h6>
-                    <p class="small text-muted mb-3">All orders are dispatched from our warehouse within 24 hours (Monday to Friday) via tracked express carrier. Orders over $75 qualify for FREE shipping.</p>
+                    <p class="small text-muted mb-3">All orders are dispatched from our warehouse within 24 hours (Monday to Friday) via tracked express carrier. Orders over PKR 4,000 qualify for FREE shipping.</p>
                     <h6 class="fw-bold mb-2"><i class="fa fa-undo text-primary me-2"></i>30-Day Money-Back Guarantee</h6>
                     <p class="small text-muted mb-3">If our bike cleaning kit does not outperform any cleaner you have ever used on your machine, simply contact support within 30 days for a full, hassle-free refund.</p>
                     <h6 class="fw-bold mb-2"><i class="fa fa-lock text-primary me-2"></i>100% Safe Surface Guarantee</h6>

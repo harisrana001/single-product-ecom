@@ -192,14 +192,12 @@
                 </div>
                 <div class="col-md-6 col-lg-4 wow fadeIn" data-wow-delay="0.3s">
                     <h5 class="mb-4">Get In Touch</h5>
-                    <p><i class="fa fa-map-marker-alt me-3"></i>Austin, Texas, USA</p>
+                    <p><i class="fa fa-map-marker-alt me-3"></i>Islamabad, Pakistan</p>
                     <p><i class="fa fa-phone-alt me-3"></i>+1 (800) 555-MOTO</p>
                     <p><i class="fa fa-envelope me-3"></i>support@motokleen.com</p>
                     <div class="d-flex pt-2">
-                        <a class="btn btn-square btn-outline-primary me-1" href="https://twitter.com" target="_blank" rel="noopener" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
                         <a class="btn btn-square btn-outline-primary me-1" href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
                         <a class="btn btn-square btn-outline-primary me-1" href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                        <a class="btn btn-square btn-outline-primary me-1" href="https://youtube.com" target="_blank" rel="noopener" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-4 wow fadeIn" data-wow-delay="0.5s">
@@ -234,7 +232,7 @@
                 </div>
                 <div class="modal-body py-4">
                     <h6 class="fw-bold mb-2"><i class="fa fa-truck text-primary me-2"></i>Fast Express Shipping</h6>
-                    <p class="small text-muted mb-3">All orders are dispatched from our warehouse within 24 hours (Monday to Friday) via tracked express carrier. Orders over $75 qualify for FREE shipping.</p>
+                    <p class="small text-muted mb-3">All orders are dispatched from our warehouse within 24 hours (Monday to Friday) via tracked express carrier. Orders over PKR 4,000 qualify for FREE shipping.</p>
                     <h6 class="fw-bold mb-2"><i class="fa fa-undo text-primary me-2"></i>30-Day Money-Back Guarantee</h6>
                     <p class="small text-muted mb-3">If our bike cleaning kit does not outperform any cleaner you have ever used on your machine, simply contact support within 30 days for a full, hassle-free refund.</p>
                     <h6 class="fw-bold mb-2"><i class="fa fa-lock text-primary me-2"></i>100% Safe Surface Guarantee</h6>
@@ -269,6 +267,14 @@
                 .replace(/'/g, '&#39;');
         }
 
+        // Utility: Format amount in PKR
+        function formatPKR(amount) {
+            if (window.MotoKleenCart && typeof window.MotoKleenCart.formatPrice === 'function') {
+                return window.MotoKleenCart.formatPrice(amount);
+            }
+            return 'PKR ' + Math.round(Number(amount) || 0).toLocaleString('en-PK');
+        }
+
         // =========================================================================
         // CONFIRMATION EMAIL HOOK (EmailJS / Formspree / Backend API)
         // =========================================================================
@@ -283,10 +289,10 @@
         //         order_id: order.orderId,
         //         customer_name: order.customer.fullName,
         //         customer_email: order.customer.email,
-        //         total_amount: '$' + order.totals.total.toFixed(2),
+        //         total_amount: formatPKR(order.totals.total),
         //         shipping_address: `${order.customer.address1}, ${order.customer.city}, ${order.customer.state} ${order.customer.postalCode}`,
         //         estimated_delivery: order.estimatedDelivery,
-        //         items_list: order.items.map(i => `${i.quantity}x ${i.name} [${i.variant} - ${i.finish}] - $${(i.price * i.quantity).toFixed(2)}`).join('\n')
+        //         items_list: order.items.map(i => `${i.quantity}x ${i.name} [${i.variant} - ${i.finish}] - ${formatPKR(i.price * i.quantity)}`).join('\n')
         //     };
         //     return emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', templateParams)
         //         .then(response => console.log('Confirmation email sent successfully!', response.status))
@@ -339,8 +345,8 @@
 
             // Build items HTML list
             const itemsHtml = items.map(function (item) {
-                const itemTotal = ((item.price || 0) * (item.quantity || 1)).toFixed(2);
-                const imgSrc = item.image || 'img/product-1.png';
+                const itemTotal = formatPKR((item.price || 0) * (item.quantity || 1));
+                const imgSrc = item.image || 'img/bike-cleaning-kit.jpg';
                 return `
                     <div class="d-flex align-items-center py-3 border-bottom">
                         <div class="position-relative me-3 flex-shrink-0">
@@ -350,12 +356,12 @@
                         <div class="flex-grow-1">
                             <h6 class="mb-1 fw-bold text-dark" style="font-size: 0.95rem;">${escapeHTML(item.name)}</h6>
                             <div class="small text-muted">
-                                <span>${escapeHTML(item.variant || 'Standard')}</span>
+                                <span>${escapeHTML(item.variant || 'Complete Care Kit')}</span>
                                 ${item.finish ? `<span class="mx-1">•</span><span>${escapeHTML(item.finish)}</span>` : ''}
                             </div>
                         </div>
                         <div class="text-end ps-3">
-                            <span class="fw-bold text-dark">$${itemTotal}</span>
+                            <span class="fw-bold text-dark">${itemTotal}</span>
                         </div>
                     </div>
                 `;
@@ -451,18 +457,18 @@
 
                         <div class="bg-white rounded-3 border p-4">
                             <h5 class="fw-bold mb-3 pb-2 border-bottom">
-                                <i class="fa fa-credit-card text-primary me-2"></i>Payment Information
+                                <i class="fa fa-money-bill-wave text-primary me-2"></i>Payment Information
                             </h5>
                             <div class="d-flex align-items-center justify-content-between mb-2">
                                 <span class="text-muted small">Payment Method:</span>
-                                <span class="fw-bold text-dark">${escapeHTML(order.paymentMethod || 'Credit Card')}</span>
+                                <span class="fw-bold text-dark">${escapeHTML(order.paymentMethod || 'Cash on Delivery (COD)')}</span>
                             </div>
                             <div class="d-flex align-items-center justify-content-between mb-2">
                                 <span class="text-muted small">Payment Status:</span>
-                                <span class="badge bg-success text-white px-2 py-1"><i class="fa fa-check me-1"></i> Authorized / Confirmed</span>
+                                <span class="badge bg-success text-white px-2 py-1"><i class="fa fa-check me-1"></i> Pay on Delivery (Confirmed)</span>
                             </div>
                             <div class="d-flex align-items-center justify-content-between">
-                                <span class="text-muted small">Billing Email:</span>
+                                <span class="text-muted small">Contact Email:</span>
                                 <span class="text-dark small">${escapeHTML(cust.email || 'N/A')}</span>
                             </div>
                         </div>
@@ -484,21 +490,21 @@
                             <div class="pt-2">
                                 <div class="d-flex justify-content-between text-muted mb-2">
                                     <span>Subtotal</span>
-                                    <span>$${Number(totals.subtotal || 0).toFixed(2)}</span>
+                                    <span>${formatPKR(totals.subtotal || 0)}</span>
                                 </div>
                                 ${totals.discount > 0 ? `
                                 <div class="d-flex justify-content-between text-success mb-2">
                                     <span>Discount ${totals.promoCode ? '(' + escapeHTML(totals.promoCode) + ')' : ''}</span>
-                                    <span>-$${Number(totals.discount).toFixed(2)}</span>
+                                    <span>-${formatPKR(totals.discount)}</span>
                                 </div>
                                 ` : ''}
                                 <div class="d-flex justify-content-between text-muted mb-3">
                                     <span>Shipping</span>
-                                    <span>${totals.shipping === 0 ? '<span class="text-success fw-bold">FREE</span>' : '$' + Number(totals.shipping || 0).toFixed(2)}</span>
+                                    <span>${totals.shipping === 0 ? '<span class="text-success fw-bold">FREE</span>' : formatPKR(totals.shipping || 0)}</span>
                                 </div>
                                 <div class="d-flex justify-content-between fw-bold text-dark pt-3 border-top fs-5">
-                                    <span>Total Paid</span>
-                                    <span style="color: var(--accent);">$${Number(totals.total || 0).toFixed(2)}</span>
+                                    <span>Total Payable (COD)</span>
+                                    <span style="color: var(--accent);">${formatPKR(totals.total || 0)}</span>
                                 </div>
                             </div>
                         </div>

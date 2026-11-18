@@ -67,13 +67,6 @@
     <div class="checkout-section py-5">
         <div class="container">
 
-            <!-- Breadcrumb Navigation -->
-            <div class="d-flex align-items-center gap-2 mb-4 text-muted small">
-                <a href="product.html" class="text-decoration-none text-muted"><i class="fa fa-arrow-left me-1"></i> Back to Product</a>
-                <span>&bull;</span>
-                <span class="text-dark fw-bold"><i class="fa fa-lock me-1 text-success"></i> Secure 256-bit SSL Checkout</span>
-            </div>
-
             <!-- Empty Cart Notice (Hidden by default, shown if cart empty) -->
             <div id="checkoutEmptyNotice" class="alert alert-warning d-none text-center py-5 my-4 rounded-3 shadow-sm">
                 <i class="fa fa-shopping-cart fa-3x text-muted mb-3 d-block"></i>
@@ -174,15 +167,13 @@
                                 <div class="col-md-6">
                                     <div class="form-floating">
                                         <select class="form-select" id="countrySelect" required>
-                                            <option value="United States" selected>United States</option>
-                                            <option value="Canada">Canada</option>
+                                            <option value="Pakistan" selected>Pakistan</option>
+                                            <option value="United States">United States</option>
                                             <option value="United Kingdom">United Kingdom</option>
+                                            <option value="United Arab Emirates">United Arab Emirates</option>
+                                            <option value="Canada">Canada</option>
                                             <option value="Australia">Australia</option>
                                             <option value="Germany">Germany</option>
-                                            <option value="France">France</option>
-                                            <option value="Italy">Italy</option>
-                                            <option value="Spain">Spain</option>
-                                            <option value="Japan">Japan</option>
                                         </select>
                                         <label for="countrySelect">Country *</label>
                                     </div>
@@ -216,69 +207,21 @@
                                         <small class="text-muted">Estimated 1 - 2 business days (Air priority)</small>
                                     </div>
                                 </div>
-                                <div class="fw-bold text-dark">$14.99</div>
+                                <div class="fw-bold text-dark">PKR 450</div>
                             </label>
                         </div>
 
                         <!-- 4. Payment Method Card -->
                         <div class="checkout-card">
                             <div class="checkout-card-header">
-                                <h5><i class="fa fa-credit-card me-2" style="color: var(--accent);"></i>4. Payment Method</h5>
-                                <span class="badge bg-success text-white"><i class="fa fa-shield-alt me-1"></i>Encrypted</span>
+                                <h5><i class="fa fa-money-bill-wave me-2" style="color: var(--accent);"></i>4. Payment Method</h5>
+                                <span class="badge bg-success text-white"><i class="fa fa-shield-alt me-1"></i>Pay at Doorstep</span>
                             </div>
 
-                            <!-- Option 1: Credit / Debit Card -->
-                            <label class="radio-select-card mb-2" for="payCard">
-                                <div class="d-flex align-items-center">
-                                    <input type="radio" name="paymentMethod" id="payCard" value="card" checked onchange="handlePaymentToggle(this.value)">
-                                    <div>
-                                        <div class="fw-bold text-dark">Credit / Debit Card</div>
-                                        <small class="text-muted">Visa, MasterCard, Amex, Discover</small>
-                                    </div>
-                                </div>
-                                <div class="d-flex gap-1 text-muted fs-5">
-                                    <i class="fab fa-cc-visa"></i>
-                                    <i class="fab fa-cc-mastercard"></i>
-                                    <i class="fab fa-cc-amex"></i>
-                                </div>
-                            </label>
-
-                            <!-- Card Inputs Container -->
-                            <div id="cardFieldsContainer" class="bg-light p-3 rounded-3 mb-3 border">
-                                <div class="row g-2">
-                                    <div class="col-12">
-                                        <label class="small text-muted mb-1" for="cardNum">Card Number *</label>
-                                        <div class="input-group">
-                                            <span class="input-group-text bg-white"><i class="fa fa-credit-card text-muted"></i></span>
-                                            <input type="text" class="form-control" id="cardNum" placeholder="4532 &bull;&bull;&bull;&bull; &bull;&bull;&bull;&bull; 8942" maxlength="19">
-                                        </div>
-                                        <div class="invalid-feedback" id="cardNumError">Please enter a valid 16-digit card number.</div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label class="small text-muted mb-1" for="cardName">Name on Card *</label>
-                                        <input type="text" class="form-control" id="cardName" placeholder="JOHN DOE">
-                                        <div class="invalid-feedback" id="cardNameError">Please enter the cardholder name.</div>
-                                    </div>
-                                    <div class="col-6 col-md-3">
-                                        <label class="small text-muted mb-1" for="cardExpiry">Expiry *</label>
-                                        <input type="text" class="form-control text-center" id="cardExpiry" placeholder="MM/YY" maxlength="5">
-                                        <div class="invalid-feedback" id="cardExpiryError">Valid MM/YY.</div>
-                                    </div>
-                                    <div class="col-6 col-md-3">
-                                        <label class="small text-muted mb-1" for="cardCvc">CVC *</label>
-                                        <input type="password" class="form-control text-center" id="cardCvc" placeholder="CVC" maxlength="4">
-                                        <div class="invalid-feedback" id="cardCvcError">3-4 digits.</div>
-                                    </div>
-                                </div>
-                                <div class="small text-muted mt-2 d-flex align-items-center">
-                                    <i class="fa fa-lock text-success me-1"></i> Your payment details are encrypted with TLS 1.3 protocol.
-                                </div>
-                            </div>
-
-                            <!-- Option 2: Cash on Delivery -->
+                            <!-- Cash on Delivery -->
                             <label class="radio-select-card" for="payCod">
                                 <div class="d-flex align-items-center">
-                                    <input type="radio" name="paymentMethod" id="payCod" value="cod" onchange="handlePaymentToggle(this.value)">
+                                    <input type="radio" name="paymentMethod" id="payCod" value="cod" checked>
                                     <div>
                                         <div class="fw-bold text-dark">Cash on Delivery (COD)</div>
                                         <small class="text-muted">Pay in cash when your package is handed over</small>
@@ -300,7 +243,7 @@
                         <button type="submit" id="placeOrderBtn" class="btn btn-primary w-100 py-3 rounded-pill fw-bold text-white shadow-sm fs-5 d-flex align-items-center justify-content-center" style="background: var(--accent); border-color: var(--accent);">
                             <i class="fa fa-lock me-2"></i>
                             <span>Place Order &bull; </span>
-                            <span id="btnTotalDisplay" class="ms-1">$0.00</span>
+                            <span id="btnTotalDisplay" class="ms-1">PKR 0</span>
                         </button>
                         <div class="text-center small text-muted mt-3">
                             By placing this order you agree to MotoKleen's <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#policyModal">Terms of Service & Guarantee</a>.
@@ -337,15 +280,15 @@
                             <div class="border-top pt-3">
                                 <div class="d-flex justify-content-between mb-2 small text-muted">
                                     <span>Subtotal</span>
-                                    <span id="summarySubtotal" class="fw-bold text-dark">$0.00</span>
+                                    <span id="summarySubtotal" class="fw-bold text-dark">PKR 0</span>
                                 </div>
                                 <div id="summaryDiscountRow" class="d-none justify-content-between mb-2 small text-success">
                                     <span>Promo Discount (RIDE10 - 10%)</span>
-                                    <span id="summaryDiscount">-$0.00</span>
+                                    <span id="summaryDiscount">-PKR 0</span>
                                 </div>
                                 <div class="d-flex justify-content-between mb-2 small text-muted">
                                     <span>Shipping</span>
-                                    <span id="summaryShipping" class="fw-bold text-dark">$0.00</span>
+                                    <span id="summaryShipping" class="fw-bold text-dark">PKR 0</span>
                                 </div>
                                 <div class="d-flex justify-content-between mb-3 small text-muted">
                                     <span>Estimated Taxes</span>
@@ -354,7 +297,7 @@
                                 <hr>
                                 <div class="d-flex justify-content-between align-items-center mb-0">
                                     <span class="h6 mb-0 fw-bold text-dark">Total Amount</span>
-                                    <span id="summaryGrandTotal" class="h4 mb-0 fw-bold" style="color: var(--accent);">$0.00</span>
+                                    <span id="summaryGrandTotal" class="h4 mb-0 fw-bold" style="color: var(--accent);">PKR 0</span>
                                 </div>
                             </div>
 
@@ -386,14 +329,12 @@
                 </div>
                 <div class="col-md-6 col-lg-4 wow fadeIn" data-wow-delay="0.3s">
                     <h5 class="mb-4">Get In Touch</h5>
-                    <p><i class="fa fa-map-marker-alt me-3"></i>Austin, Texas, USA</p>
+                    <p><i class="fa fa-map-marker-alt me-3"></i>Islamabad, Pakistan</p>
                     <p><i class="fa fa-phone-alt me-3"></i>+1 (800) 555-MOTO</p>
                     <p><i class="fa fa-envelope me-3"></i>support@motokleen.com</p>
                     <div class="d-flex pt-2">
-                        <a class="btn btn-square btn-outline-primary me-1" href="https://twitter.com" target="_blank" rel="noopener" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
                         <a class="btn btn-square btn-outline-primary me-1" href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
                         <a class="btn btn-square btn-outline-primary me-1" href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                        <a class="btn btn-square btn-outline-primary me-1" href="https://youtube.com" target="_blank" rel="noopener" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-4 wow fadeIn" data-wow-delay="0.5s">
@@ -428,7 +369,7 @@
                 </div>
                 <div class="modal-body py-4">
                     <h6 class="fw-bold mb-2"><i class="fa fa-truck text-primary me-2"></i>Fast Express Shipping</h6>
-                    <p class="small text-muted mb-3">All orders are dispatched from our warehouse within 24 hours (Monday to Friday) via tracked express carrier. Orders over $75 qualify for FREE shipping.</p>
+                    <p class="small text-muted mb-3">All orders are dispatched from our warehouse within 24 hours (Monday to Friday) via tracked express carrier. Orders over PKR 4,000 qualify for FREE shipping.</p>
                     <h6 class="fw-bold mb-2"><i class="fa fa-undo text-primary me-2"></i>30-Day Money-Back Guarantee</h6>
                     <p class="small text-muted mb-3">If our bike cleaning kit does not outperform any cleaner you have ever used on your machine, simply contact support within 30 days for a full, hassle-free refund.</p>
                     <h6 class="fw-bold mb-2"><i class="fa fa-lock text-primary me-2"></i>100% Safe Surface Guarantee</h6>
@@ -470,15 +411,6 @@
         function handleShippingChange(method) {
             currentShippingMethod = method;
             renderOrderSummary();
-        }
-
-        function handlePaymentToggle(method) {
-            const cardBox = document.getElementById('cardFieldsContainer');
-            if (method === 'card') {
-                cardBox.classList.remove('d-none');
-            } else {
-                cardBox.classList.add('d-none');
-            }
         }
 
         function handleApplyPromo() {
@@ -529,7 +461,7 @@
                 if (totals.subtotal >= totals.freeShippingThreshold) {
                     stdRadioPrice.innerHTML = '<span class="badge bg-success">FREE</span>';
                 } else {
-                    stdRadioPrice.textContent = '$' + (6.99).toFixed(2);
+                    stdRadioPrice.textContent = MotoKleenCart.formatPrice(200);
                 }
             }
 
@@ -537,7 +469,7 @@
             const listContainer = document.getElementById('summaryItemsList');
             let itemsHtml = '';
             items.forEach(function (item) {
-                const lineTotal = (item.price * item.quantity).toFixed(2);
+                const lineTotal = MotoKleenCart.formatPrice(item.price * item.quantity);
                 itemsHtml += `
                     <div class="d-flex align-items-center justify-content-between py-2 border-bottom">
                         <div class="d-flex align-items-center">
@@ -550,21 +482,21 @@
                                 <small class="text-muted" style="font-size: 11px;">${escapeHTML(item.variant)} &bull; ${escapeHTML(item.finish)}</small>
                             </div>
                         </div>
-                        <div class="fw-bold text-dark ps-2" style="font-size: 13px;">$${lineTotal}</div>
+                        <div class="fw-bold text-dark ps-2" style="font-size: 13px;">${lineTotal}</div>
                     </div>
                 `;
             });
             listContainer.innerHTML = itemsHtml;
 
             // Financial breakdown
-            document.getElementById('summarySubtotal').textContent = '$' + totals.subtotal.toFixed(2);
+            document.getElementById('summarySubtotal').textContent = MotoKleenCart.formatPrice(totals.subtotal);
 
             const discountRow = document.getElementById('summaryDiscountRow');
             const discountEl = document.getElementById('summaryDiscount');
             if (totals.discount > 0) {
                 discountRow.classList.remove('d-none');
                 discountRow.classList.add('d-flex');
-                discountEl.textContent = '-$' + totals.discount.toFixed(2);
+                discountEl.textContent = '-' + MotoKleenCart.formatPrice(totals.discount);
             } else {
                 discountRow.classList.add('d-none');
                 discountRow.classList.remove('d-flex');
@@ -574,11 +506,11 @@
             if (totals.shipping === 0) {
                 shipEl.innerHTML = '<span class="badge bg-success">FREE</span>';
             } else {
-                shipEl.textContent = '$' + totals.shipping.toFixed(2);
+                shipEl.textContent = MotoKleenCart.formatPrice(totals.shipping);
             }
 
-            document.getElementById('summaryGrandTotal').textContent = '$' + totals.total.toFixed(2);
-            document.getElementById('btnTotalDisplay').textContent = '$' + totals.total.toFixed(2);
+            document.getElementById('summaryGrandTotal').textContent = MotoKleenCart.formatPrice(totals.total);
+            document.getElementById('btnTotalDisplay').textContent = MotoKleenCart.formatPrice(totals.total);
 
             // Populate promo input if active
             const promo = MotoKleenCart.getPromo();
@@ -590,24 +522,6 @@
                 feedback.innerHTML = '<i class="fa fa-check-circle me-1"></i>Promo code ' + promo.code + ' applied (10% off) <a href="javascript:void(0)" onclick="handleRemovePromo()" class="text-danger ms-2 text-decoration-none">Remove</a>';
             }
         }
-
-        // Card number auto-spacing
-        document.getElementById('cardNum').addEventListener('input', function (e) {
-            let val = e.target.value.replace(/\D/g, '');
-            val = val.substring(0, 16);
-            let formatted = val.match(/.{1,4}/g)?.join(' ') || val;
-            e.target.value = formatted;
-        });
-
-        // Expiry date auto-slash
-        document.getElementById('cardExpiry').addEventListener('input', function (e) {
-            let val = e.target.value.replace(/\D/g, '').substring(0, 4);
-            if (val.length >= 3) {
-                e.target.value = val.substring(0, 2) + '/' + val.substring(2);
-            } else {
-                e.target.value = val;
-            }
-        });
 
         // Checkout form submission
         document.getElementById('checkoutForm').addEventListener('submit', function (e) {
@@ -649,16 +563,6 @@
             checkField('state', val => val.trim().length >= 2);
             checkField('postalCode', val => val.trim().length >= 3);
 
-            // Validate Card if Card payment is chosen
-            const selectedPayment = document.querySelector('input[name="paymentMethod"]:checked')?.value || 'card';
-            if (selectedPayment === 'card') {
-                const cardNumClean = document.getElementById('cardNum').value.replace(/\s/g, '');
-                checkField('cardNum', () => cardNumClean.length >= 15 && cardNumClean.length <= 16, 'cardNumError');
-                checkField('cardName', val => val.trim().length >= 2, 'cardNameError');
-                checkField('cardExpiry', val => /^(0[1-9]|1[0-2])\/\d{2}$/.test(val.trim()), 'cardExpiryError');
-                checkField('cardCvc', val => /^\d{3,4}$/.test(val.trim()), 'cardCvcError');
-            }
-
             if (!isValid) {
                 if (firstInvalidEl) {
                     firstInvalidEl.focus();
@@ -671,18 +575,6 @@
             const submitBtn = document.getElementById('placeOrderBtn');
             submitBtn.disabled = true;
             submitBtn.innerHTML = '<i class="fa fa-spinner fa-spin me-2"></i> Processing Your Order...';
-
-            // =========================================================================
-            // STRIPE / PAYMENT GATEWAY INTEGRATION HOOK (Production Setup)
-            // =========================================================================
-            // When connecting to live Stripe Checkout or Elements:
-            // 1. Send cart and customer details to your backend endpoint:
-            //    fetch('/api/create-checkout-session', {
-            //        method: 'POST',
-            //        headers: { 'Content-Type': 'application/json' },
-            //        body: JSON.stringify({ items: items, customer: customerData })
-            //    }).then(res => res.json()).then(data => stripe.redirectToCheckout({ sessionId: data.id }));
-            // =========================================================================
 
             // Generate Order ID in MK-YYYYMMDD-XXXX format
             const now = new Date();
@@ -709,7 +601,7 @@
                 createdAtFormatted: now.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }),
                 estimatedDelivery: deliveryFormatted,
                 shippingMethod: (currentShippingMethod === 'express') ? 'Express Priority Courier (1-2 days)' : 'Standard Tracked Delivery (3-5 days)',
-                paymentMethod: (selectedPayment === 'card') ? 'Credit Card (•••• 8942)' : 'Cash on Delivery (COD)',
+                paymentMethod: 'Cash on Delivery (COD)',
                 customer: {
                     email: document.getElementById('custEmail').value.trim(),
                     phone: document.getElementById('custPhone').value.trim(),

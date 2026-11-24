@@ -3,10 +3,10 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Order Confirmed | MotoKleen Motorcycle Cleaning Kit</title>
+    <title>Order Confirmed | Autobility Motorcycle Cleaning Kit</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="motorcycle cleaning kit order confirmation, MotoKleen receipt" name="keywords">
-    <meta content="Thank you for your MotoKleen order. Your motorcycle cleaning kit is being prepped for dispatch." name="description">
+    <meta content="motorcycle cleaning kit order confirmation, Autobility receipt" name="keywords">
+    <meta content="Thank you for your Autobility order. Your motorcycle cleaning kit is being prepped for dispatch." name="description">
 
     <!-- Favicon -->
     <link href="img/favicon.ico" rel="icon">
@@ -130,6 +130,57 @@
             }
         }
     </style>
+    <!-- Meta Pixel & TikTok Pixel Base Tracking -->
+    <script>
+        window.META_PIXEL_ID = 'YOUR_META_PIXEL_ID';
+        window.TIKTOK_PIXEL_ID = 'YOUR_TIKTOK_PIXEL_ID';
+
+        // Meta Pixel Base
+        !function(f,b,e,v,n,t,s)
+        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+        n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t,s)}(window, document,'script',
+        'https://connect.facebook.net/en_US/fbevents.js');
+
+        if (window.META_PIXEL_ID && window.META_PIXEL_ID !== 'YOUR_META_PIXEL_ID') {
+            fbq('init', window.META_PIXEL_ID);
+        }
+        fbq('track', 'PageView');
+
+        // TikTok Pixel Base
+        !function (w, d, t) {
+            w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie","holdConsent","revokeConsent","grantConsent"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var r="https://analytics.tiktok.com/i18n/pixel/events.js",o=n&&n.partner;ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=r,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};var a=document.createElement("script");a.type="text/javascript",a.async=!0,a.src=r+"?sdkid="+e+"&lib="+t;var c=document.getElementsByTagName("script")[0];c.parentNode.insertBefore(a,c)};
+            if (window.TIKTOK_PIXEL_ID && window.TIKTOK_PIXEL_ID !== 'YOUR_TIKTOK_PIXEL_ID') {
+                ttq.load(window.TIKTOK_PIXEL_ID);
+            }
+            ttq.page();
+        }(window, document, 'ttq');
+
+        // Universal Pixel Event Helper
+        window.trackPixelEvent = function(eventName, data) {
+            try {
+                if (typeof fbq === 'function') {
+                    fbq('track', eventName, data);
+                }
+                if (typeof ttq === 'object' && typeof ttq.track === 'function') {
+                    const ttMap = {
+                        'PageView': 'PageView',
+                        'ViewContent': 'ViewContent',
+                        'AddToCart': 'AddToCart',
+                        'InitiateCheckout': 'InitiateCheckout',
+                        'Purchase': 'CompletePayment'
+                    };
+                    ttq.track(ttMap[eventName] || eventName, data);
+                }
+            } catch (err) {
+                console.warn('[Pixel Tracker] Error firing event:', eventName, err);
+            }
+        };
+    </script>
+    <!-- End Meta Pixel & TikTok Pixel Base Tracking -->
 </head>
 
 <body>
@@ -146,7 +197,7 @@
         <div class="container">
             <nav class="navbar navbar-expand-lg navbar-light p-0">
                 <a href="index.html" class="navbar-brand">
-                    <h2 class="text-dark mb-0">Moto<span style="color: var(--accent);">Kleen</span></h2>
+                    <h2 class="text-dark mb-0">Auto<span style="color: var(--accent);">bility</span></h2>
                 </a>
                 <button type="button" class="navbar-toggler ms-auto me-0" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -186,25 +237,26 @@
             <div class="row g-5">
                 <div class="col-md-6 col-lg-4 wow fadeIn" data-wow-delay="0.1s">
                     <a href="index.html" class="d-inline-block mb-3">
-                        <h1 class="text-primary">Moto<span style="color: var(--accent);">Kleen</span></h1>
+                        <h1 class="text-primary">Auto<span style="color: var(--accent);">bility</span></h1>
                     </a>
                     <p class="mb-0">Engineered for motorcycle and bike enthusiasts. Pro-grade cleaning, chain degreasing, and ceramic protection solutions that keep your machine in showroom condition.</p>
                 </div>
                 <div class="col-md-6 col-lg-4 wow fadeIn" data-wow-delay="0.3s">
                     <h5 class="mb-4">Get In Touch</h5>
                     <p><i class="fa fa-map-marker-alt me-3"></i>Islamabad, Pakistan</p>
-                    <p><i class="fa fa-phone-alt me-3"></i>+1 (800) 555-MOTO</p>
-                    <p><i class="fa fa-envelope me-3"></i>support@motokleen.com</p>
+                    <p><i class="fa fa-phone-alt me-3"></i><a href="tel:+923100123996" class="text-secondary text-decoration-none">+92 310 0123996</a></p>
+                    <p class="mb-1"><i class="fa fa-envelope me-3"></i><a href="mailto:stormmarketing89@gmail.com" class="text-secondary text-decoration-none">stormmarketing89@gmail.com</a></p>
+                    <p><i class="fa fa-envelope me-3" style="visibility: hidden;"></i><a href="mailto:harisrana840@gmail.com" class="text-secondary text-decoration-none">harisrana840@gmail.com</a></p>
                     <div class="d-flex pt-2">
-                        <a class="btn btn-square btn-outline-primary me-1" href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                        <a class="btn btn-square btn-outline-primary me-1" href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a class="btn btn-square btn-outline-primary me-1" href="https://www.facebook.com/share/18ithorMBU/" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a class="btn btn-square btn-outline-primary me-1" href="https://www.instagram.com/autobility.pk?dmpr=MWZka3JvM294anpjZQ==" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-4 wow fadeIn" data-wow-delay="0.5s">
                     <h5 class="mb-4">Quick Links</h5>
                     <a class="btn btn-link" href="index.html">Home</a>
                     <a class="btn btn-link" href="product.html">Pro Detailing Kit</a>
-                    <a class="btn btn-link" href="about.html">About MotoKleen</a>
+                    <a class="btn btn-link" href="about.html">About Autobility</a>
                     <a class="btn btn-link" href="contact.html">Contact & Support</a>
                     <a class="btn btn-link" href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#policyModal">Shipping & Guarantee</a>
                 </div>
@@ -214,7 +266,7 @@
             <div class="copyright">
                 <div class="row">
                     <div class="col-12 text-center mb-3 mb-md-0">
-                        &copy; <a class="border-bottom" href="index.html">MotoKleen</a>, All Rights Reserved.
+                        &copy; <a class="border-bottom" href="index.html">Autobility</a>, All Rights Reserved.
                     </div>
                 </div>
             </div>
@@ -306,7 +358,7 @@
 
             let order = null;
             try {
-                const stored = localStorage.getItem('motokleen_last_order');
+                const stored = localStorage.getItem('autobility_last_order') || localStorage.getItem('motokleen_last_order');
                 if (stored) {
                     order = JSON.parse(stored);
                 }
@@ -343,6 +395,18 @@
             const totals = order.totals || {};
             const items = Array.isArray(order.items) ? order.items : [];
 
+            // Trigger Meta & TikTok Purchase Pixel event
+            if (typeof window.trackPixelEvent === 'function') {
+                window.trackPixelEvent('Purchase', {
+                    content_name: 'Complete Bike Cleaning & Care Kit',
+                    content_type: 'product',
+                    value: (totals.total || 2200),
+                    currency: 'PKR',
+                    order_id: order.orderId,
+                    num_items: items.reduce(function (acc, i) { return acc + (i.quantity || 1); }, 0)
+                });
+            }
+
             // Build items HTML list
             const itemsHtml = items.map(function (item) {
                 const itemTotal = formatPKR((item.price || 0) * (item.quantity || 1));
@@ -376,6 +440,8 @@
             ].filter(Boolean);
 
             const addressHtml = addressParts.map(part => `<div>${escapeHTML(part)}</div>`).join('');
+            const waUrl = order.whatsappUrl || ('https://wa.me/923100123996?text=' + encodeURIComponent('Hi Autobility, I placed order #' + (order.orderId || '') + ' (Cash on Delivery)'));
+            const waSupportUrl = 'https://wa.me/923100123996?text=' + encodeURIComponent('Hi Autobility, I need support for order #' + (order.orderId || ''));
 
             // Full Confirmation HTML
             container.innerHTML = `
@@ -395,6 +461,25 @@
                         <p class="small text-muted mb-0">
                             A full order receipt and tracking link has been sent to <strong class="text-dark">${escapeHTML(cust.email || 'your email')}</strong>.
                         </p>
+                    </div>
+                </div>
+
+                <!-- WhatsApp Order Confirmation Callout -->
+                <div class="row justify-content-center mb-4">
+                    <div class="col-lg-10">
+                        <div class="card border-0 shadow-sm text-white" style="background: linear-gradient(135deg, #25D366 0%, #128C7E 100%); border-radius: 14px;">
+                            <div class="card-body p-4 d-flex flex-column flex-md-row align-items-center justify-content-between gap-3">
+                                <div>
+                                    <h4 class="fw-bold mb-1 text-white"><i class="fab fa-whatsapp me-2"></i>Instant WhatsApp Confirmation</h4>
+                                    <p class="mb-0 small" style="opacity: 0.95;">
+                                        Order <strong>#${escapeHTML(order.orderId)}</strong> registered! Tap below to send your order receipt to our Islamabad dispatch team on <strong>+92 310 0123996</strong> for instant dispatch.
+                                    </p>
+                                </div>
+                                <a href="${escapeHTML(waUrl)}" target="_blank" rel="noopener" class="btn btn-light btn-lg fw-bold text-success px-4 py-3 rounded-pill text-nowrap shadow-sm">
+                                    <i class="fab fa-whatsapp me-2 fs-5"></i> Confirm on WhatsApp
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -511,6 +596,9 @@
 
                         <!-- Action Buttons & Guarantee -->
                         <div class="d-grid gap-2 print-hide">
+                            <a href="${escapeHTML(waUrl)}" target="_blank" rel="noopener" class="btn btn-success py-3 fw-bold text-white shadow-sm d-flex align-items-center justify-content-center" style="background-color: #25D366; border-color: #25D366;">
+                                <i class="fab fa-whatsapp me-2 fs-5"></i> Confirm Order on WhatsApp
+                            </a>
                             <button onclick="window.print()" class="btn btn-outline-dark py-2 fw-bold">
                                 <i class="fa fa-print me-2"></i> Print Order Receipt
                             </button>
@@ -523,9 +611,9 @@
                         <div class="card bg-light border-0 mt-3 print-hide">
                             <div class="card-body p-3 text-center">
                                 <h6 class="fw-bold mb-1" style="font-size: 0.9rem;">Need to update your delivery address?</h6>
-                                <p class="text-muted small mb-2">Contact our rider support team within 2 hours of placing your order.</p>
-                                <a href="contact.html" class="small fw-bold text-primary text-decoration-none">
-                                    Contact Rider Support <i class="fa fa-arrow-right ms-1"></i>
+                                <p class="text-muted small mb-2">WhatsApp or call us at <a href="tel:+923100123996" class="fw-bold text-dark">+92 310 0123996</a> or email <a href="mailto:stormmarketing89@gmail.com" class="fw-bold text-dark">stormmarketing89@gmail.com</a> / <a href="mailto:harisrana840@gmail.com" class="fw-bold text-dark">harisrana840@gmail.com</a>.</p>
+                                <a href="${escapeHTML(waSupportUrl)}" target="_blank" rel="noopener" class="btn btn-sm btn-outline-success rounded-pill px-3 py-1 fw-bold">
+                                    <i class="fab fa-whatsapp me-1"></i> WhatsApp Support (+92 310 0123996)
                                 </a>
                             </div>
                         </div>
@@ -538,6 +626,13 @@
             renderConfirmation();
         });
     </script>
+
+    <!-- Floating WhatsApp Chat Widget -->
+    <a href="https://wa.me/923100123996?text=Hi%20Autobility,%20I%20have%20a%20question%20about%20your%20products" class="whatsapp-float" target="_blank" rel="noopener" aria-label="Chat with Autobility on WhatsApp" title="Chat on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+        <span class="whatsapp-tooltip">Chat with us on WhatsApp</span>
+    </a>
+
 </body>
 
 </html>

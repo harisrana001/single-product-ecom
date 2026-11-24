@@ -7,8 +7,10 @@
 (function (window) {
     'use strict';
 
-    const STORAGE_KEY = 'motokleen_cart';
-    const PROMO_KEY = 'motokleen_promo';
+    const STORAGE_KEY = 'autobility_cart';
+    const LEGACY_STORAGE_KEY = 'motokleen_cart';
+    const PROMO_KEY = 'autobility_promo';
+    const LEGACY_PROMO_KEY = 'motokleen_promo';
     const FREE_SHIPPING_THRESHOLD = 4000;
     const STANDARD_SHIPPING_FLAT = 200;
     const EXPRESS_SHIPPING_FLAT = 450;
@@ -68,7 +70,7 @@
          */
         getItems: function () {
             try {
-                const raw = localStorage.getItem(STORAGE_KEY);
+                const raw = localStorage.getItem(STORAGE_KEY) || localStorage.getItem(LEGACY_STORAGE_KEY);
                 if (!raw) return [];
                 const parsed = JSON.parse(raw);
                 if (!Array.isArray(parsed)) return [];
@@ -89,7 +91,7 @@
                     };
                 });
             } catch (err) {
-                console.warn('[MotoKleen Cart] Corrupted cart data reset:', err);
+                console.warn('[Autobility Cart] Corrupted cart data reset:', err);
                 localStorage.removeItem(STORAGE_KEY);
                 return [];
             }
@@ -102,9 +104,13 @@
             try {
                 localStorage.setItem(STORAGE_KEY, JSON.stringify(items));
             } catch (err) {
-                console.error('[MotoKleen Cart] Failed to save cart to localStorage:', err);
+                console.error('[Autobility Cart] Failed to save cart to localStorage:', err);
             }
             this.updateUI();
+            window.dispatchEvent(new CustomEvent('autobility:cart-changed', {
+                detail: { items: items, totals: this.getTotals() }
+            }));
+            window.dispatchEvent(new CustomEvent('autobility:cart-changed', { detail: { items: this.getItems(), totals: this.getTotals() } }));
             window.dispatchEvent(new CustomEvent('motokleen:cart-changed', {
                 detail: { items: items, totals: this.getTotals() }
             }));
@@ -143,11 +149,23 @@
             }
 
             this.saveItems(items);
+
+            // Trigger Meta & TikTok AddToCart Pixel event
+            if (typeof window.trackPixelEvent === 'function') {
+                window.trackPixelEvent('AddToCart', {
+                    content_name: product.name,
+                    content_ids: [String(product.id || DEFAULT_PRODUCT.id)],
+                    content_type: 'product',
+                    value: Number(product.price) * addQty,
+                    currency: 'PKR',
+                    quantity: addQty
+                });
+            }
             if (shouldOpen) {
                 try {
                     this.openDrawer();
                 } catch (err) {
-                    console.error('[MotoKleen Cart] Error opening drawer:', err);
+                    console.error('[Autobility Cart] Error opening drawer:', err);
                 }
             }
             return items;
@@ -205,6 +223,7 @@
                 localStorage.removeItem(PROMO_KEY);
             } catch (e) {}
             this.updateUI();
+            window.dispatchEvent(new CustomEvent('autobility:cart-changed', { detail: { items: this.getItems(), totals: this.getTotals() } }));
             window.dispatchEvent(new CustomEvent('motokleen:cart-changed', {
                 detail: { items: [], totals: this.getTotals() }
             }));
@@ -234,7 +253,8 @@
                     localStorage.setItem(PROMO_KEY, 'RIDE10');
                 } catch (e) {}
                 this.updateUI();
-                window.dispatchEvent(new CustomEvent('motokleen:cart-changed', {
+                window.dispatchEvent(new CustomEvent('autobility:cart-changed', { detail: { items: this.getItems(), totals: this.getTotals() } }));
+            window.dispatchEvent(new CustomEvent('motokleen:cart-changed', {
                     detail: { items: this.getItems(), totals: this.getTotals() }
                 }));
                 announce('Promo code RIDE10 applied: 10% discount');
@@ -251,6 +271,7 @@
                 localStorage.removeItem(PROMO_KEY);
             } catch (e) {}
             this.updateUI();
+            window.dispatchEvent(new CustomEvent('autobility:cart-changed', { detail: { items: this.getItems(), totals: this.getTotals() } }));
             window.dispatchEvent(new CustomEvent('motokleen:cart-changed', {
                 detail: { items: this.getItems(), totals: this.getTotals() }
             }));
@@ -334,7 +355,7 @@
                     }
                 }
             } catch (err) {
-                console.warn('[MotoKleen Cart] Bootstrap Offcanvas show failed, using fallback:', err);
+                console.warn('[Autobility Cart] Bootstrap Offcanvas show failed, using fallback:', err);
             }
 
             // 2. Pure CSS/DOM fallback for environments where Bootstrap JS failed or is offline
@@ -374,7 +395,7 @@
                     }
                 }
             } catch (err) {
-                console.warn('[MotoKleen Cart] Bootstrap Offcanvas hide failed:', err);
+                console.warn('[Autobility Cart] Bootstrap Offcanvas hide failed:', err);
             }
 
             // Ensure fallback visibility and backdrop are removed
@@ -621,7 +642,7 @@
 
             // Auto-bind any elements with data-motokleen-add
             document.addEventListener('click', (e) => {
-                const addTrigger = e.target.closest('[data-motokleen-add]');
+                const addTrigger = e.target.closest('[data-autobility-add], [data-motokleen-add]');
                 if (addTrigger) {
                     e.preventDefault();
                     const variant = addTrigger.getAttribute('data-variant') || DEFAULT_PRODUCT.variant;
@@ -639,7 +660,7 @@
                 }
 
                 // Open drawer triggers
-                const openTrigger = e.target.closest('[data-motokleen-open-cart], .cart-nav-btn');
+                const openTrigger = e.target.closest('[data-autobility-open-cart], [data-motokleen-open-cart], .cart-nav-btn');
                 if (openTrigger) {
                     e.preventDefault();
                     this.openDrawer();
@@ -649,6 +670,7 @@
     };
 
     // Expose module globally
+    window.AutobilityCart = MotoKleenCart;
     window.MotoKleenCart = MotoKleenCart;
 
     // Helper shortcuts for HTML attributes

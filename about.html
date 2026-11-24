@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>MotoKleen - About Us</title>
+    <title>Autobility - About Us</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -31,6 +31,57 @@
 
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
+    <!-- Meta Pixel & TikTok Pixel Base Tracking -->
+    <script>
+        window.META_PIXEL_ID = 'YOUR_META_PIXEL_ID';
+        window.TIKTOK_PIXEL_ID = 'YOUR_TIKTOK_PIXEL_ID';
+
+        // Meta Pixel Base
+        !function(f,b,e,v,n,t,s)
+        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+        n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t,s)}(window, document,'script',
+        'https://connect.facebook.net/en_US/fbevents.js');
+
+        if (window.META_PIXEL_ID && window.META_PIXEL_ID !== 'YOUR_META_PIXEL_ID') {
+            fbq('init', window.META_PIXEL_ID);
+        }
+        fbq('track', 'PageView');
+
+        // TikTok Pixel Base
+        !function (w, d, t) {
+            w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie","holdConsent","revokeConsent","grantConsent"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var r="https://analytics.tiktok.com/i18n/pixel/events.js",o=n&&n.partner;ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=r,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};var a=document.createElement("script");a.type="text/javascript",a.async=!0,a.src=r+"?sdkid="+e+"&lib="+t;var c=document.getElementsByTagName("script")[0];c.parentNode.insertBefore(a,c)};
+            if (window.TIKTOK_PIXEL_ID && window.TIKTOK_PIXEL_ID !== 'YOUR_TIKTOK_PIXEL_ID') {
+                ttq.load(window.TIKTOK_PIXEL_ID);
+            }
+            ttq.page();
+        }(window, document, 'ttq');
+
+        // Universal Pixel Event Helper
+        window.trackPixelEvent = function(eventName, data) {
+            try {
+                if (typeof fbq === 'function') {
+                    fbq('track', eventName, data);
+                }
+                if (typeof ttq === 'object' && typeof ttq.track === 'function') {
+                    const ttMap = {
+                        'PageView': 'PageView',
+                        'ViewContent': 'ViewContent',
+                        'AddToCart': 'AddToCart',
+                        'InitiateCheckout': 'InitiateCheckout',
+                        'Purchase': 'CompletePayment'
+                    };
+                    ttq.track(ttMap[eventName] || eventName, data);
+                }
+            } catch (err) {
+                console.warn('[Pixel Tracker] Error firing event:', eventName, err);
+            }
+        };
+    </script>
+    <!-- End Meta Pixel & TikTok Pixel Base Tracking -->
 </head>
 
 <body>
@@ -49,7 +100,7 @@
         <div class="container">
             <nav class="navbar navbar-expand-lg navbar-light p-0">
                 <a href="index.html" class="navbar-brand">
-                    <h2 class="text-dark mb-0">Moto<span style="color: var(--accent);">Kleen</span></h2>
+                    <h2 class="text-dark mb-0">Auto<span style="color: var(--accent);">bility</span></h2>
                 </a>
                 <button type="button" class="navbar-toggler ms-auto me-0" data-bs-toggle="collapse"
                     data-bs-target="#navbarCollapse">
@@ -82,7 +133,7 @@
                 </div>
                 <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
                     <h1 class="text-primary mb-4">Passionate About Keeping <span class="fw-light text-dark">Every Ride Immaculate</span></h1>
-                    <p class="mb-4">We founded MotoKleen out of a single obsession: giving riders the most effective, safest cleaning and detailing products on earth. Whether you ride a 200hp superbike, carve canyon roads, or tackle muddy trails on an adventure tourer, your machine deserves the ultimate care.</p>
+                    <p class="mb-4">We founded Autobility out of a single obsession: giving riders the most effective, safest cleaning and detailing products on earth. Whether you ride a 200hp superbike, carve canyon roads, or tackle muddy trails on an adventure tourer, your machine deserves the ultimate care.</p>
                     <p class="mb-4">Our formulations are rigorously tested on raw aluminum, anodized components, rubber fork seals, matte finishes, and carbon fiber. No harsh acids, zero toxic residue, and completely biodegradable.</p>
                     <a class="btn btn-primary py-2 px-4" href="product.html">Explore The Kit</a>
                 </div>
@@ -101,25 +152,26 @@
             <div class="row g-5">
                 <div class="col-md-6 col-lg-4 wow fadeIn" data-wow-delay="0.1s">
                     <a href="index.html" class="d-inline-block mb-3">
-                        <h1 class="text-primary">Moto<span style="color: var(--accent);">Kleen</span></h1>
+                        <h1 class="text-primary">Auto<span style="color: var(--accent);">bility</span></h1>
                     </a>
                     <p class="mb-0">Engineered for motorcycle and bike enthusiasts. Pro-grade cleaning, chain degreasing, and ceramic protection solutions that keep your machine in showroom condition.</p>
                 </div>
                 <div class="col-md-6 col-lg-4 wow fadeIn" data-wow-delay="0.3s">
                     <h5 class="mb-4">Get In Touch</h5>
                     <p><i class="fa fa-map-marker-alt me-3"></i>Islamabad, Pakistan</p>
-                    <p><i class="fa fa-phone-alt me-3"></i>+1 (800) 555-MOTO</p>
-                    <p><i class="fa fa-envelope me-3"></i>support@motokleen.com</p>
+                    <p><i class="fa fa-phone-alt me-3"></i><a href="tel:+923100123996" class="text-secondary text-decoration-none">+92 310 0123996</a></p>
+                    <p class="mb-1"><i class="fa fa-envelope me-3"></i><a href="mailto:stormmarketing89@gmail.com" class="text-secondary text-decoration-none">stormmarketing89@gmail.com</a></p>
+                    <p><i class="fa fa-envelope me-3" style="visibility: hidden;"></i><a href="mailto:harisrana840@gmail.com" class="text-secondary text-decoration-none">harisrana840@gmail.com</a></p>
                     <div class="d-flex pt-2">
-                        <a class="btn btn-square btn-outline-primary me-1" href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                        <a class="btn btn-square btn-outline-primary me-1" href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a class="btn btn-square btn-outline-primary me-1" href="https://www.facebook.com/share/18ithorMBU/" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a class="btn btn-square btn-outline-primary me-1" href="https://www.instagram.com/autobility.pk?dmpr=MWZka3JvM294anpjZQ==" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-4 wow fadeIn" data-wow-delay="0.5s">
                     <h5 class="mb-4">Quick Links</h5>
                     <a class="btn btn-link" href="index.html">Home</a>
                     <a class="btn btn-link" href="product.html">Pro Detailing Kit</a>
-                    <a class="btn btn-link" href="about.html">About MotoKleen</a>
+                    <a class="btn btn-link" href="about.html">About Autobility</a>
                     <a class="btn btn-link" href="contact.html">Contact & Support</a>
                     <a class="btn btn-link" href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#policyModal">Shipping & Guarantee</a>
                 </div>
@@ -129,7 +181,7 @@
             <div class="copyright">
                 <div class="row">
                     <div class="col-12 text-center mb-3 mb-md-0">
-                        &copy; <a class="border-bottom" href="index.html">MotoKleen</a>, All Rights Reserved.
+                        &copy; <a class="border-bottom" href="index.html">Autobility</a>, All Rights Reserved.
                     </div>
                 </div>
             </div>
@@ -137,6 +189,13 @@
     </div>
     <!-- Footer End -->
 
+
+    
+    <!-- Floating WhatsApp Chat Widget -->
+    <a href="https://wa.me/923100123996?text=Hi%20Autobility,%20I%20have%20a%20question%20about%20your%20products" class="whatsapp-float" target="_blank" rel="noopener" aria-label="Chat with Autobility on WhatsApp" title="Chat on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+        <span class="whatsapp-tooltip">Chat with us on WhatsApp</span>
+    </a>
 
     <!-- Back to Top -->
     <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
